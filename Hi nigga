@@ -1,1 +1,3056 @@
-your code here
+repeat task.wait() until game:IsLoaded();
+
+
+local function createCirclePart(radius, thickness, position, transparency)
+    local part = Instance.new("Part")
+    part.Shape = Enum.PartType.Cylinder
+    part.Size = Vector3.new(thickness, radius * 2, radius * 2)
+    part.CFrame = CFrame.new(position) * CFrame.Angles(0, 0, math.rad(90))
+    part.Anchored = true
+    part.Transparency = transparency
+    part.CanCollide = true
+    part.CastShadow = false
+    part.Color = Color3.new(0, 0, 0)
+    part.Parent = game.Workspace
+    return part
+end
+
+
+createCirclePart(100000, 0.5, Vector3.new(0, -500, 0), 0.5)
+createCirclePart(150, 0.5, Vector3.new(-68, 0, 20354), 0.5)
+createCirclePart(25, 1, Vector3.new(150, 500, 30), 0.5)
+createCirclePart(40, 0.5, Vector3.new(150, 700, 30), 0.5)
+createCirclePart(25, 1, Vector3.new(0, -2, 0), 0.5)
+createCirclePart(100000, 1, Vector3.new(30000000, 29999995, 30000000), 1)
+createCirclePart(50, 1, Vector3.new(1063, 129, 23006), 0.5)
+createCirclePart(25, 1, Vector3.new(0 ,900000000000 ,0), 0)
+createCirclePart(25, 0.5, Vector3.new(1000, -500, 1000), 0)
+
+
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
+local window = DrRayLibrary:Load("VexonHub", "http://www.roblox.com/asset/?id=84519376661277")
+
+game:GetService("CoreGui").DrRay.TopBar.BackgroundColor3 = Color3.new(0,0,0);
+game:GetService("CoreGui").DrRay.MainBar.BackgroundColor3 = Color3.new(0,0,0);
+game:GetService("CoreGui").DrRay.TopBar.TopBar.BackgroundColor3 = Color3.new(0,0,0);
+game:GetService("CoreGui").DrRay.TopBar.ProfileMenu.Clock.BackgroundTransparency = 1;
+game:GetService("CoreGui").DrRay.TopBar.ProfileMenu.PlayerProfile.BackgroundTransparency = 0.50;
+game:GetService("CoreGui").DrRay.TopBar.ProfileMenu.Title.BackgroundTransparency = 0.50;
+game:GetService("CoreGui").DrRay.TopBar.TopBarClose.BackgroundTransparency = 0.55;
+game:GetService("CoreGui").DrRay.TopBar.TopBarClose.idk.Visible = false;
+
+
+-- fling fonction
+function miniFling(playerToFling)
+	local a=game.Players.LocalPlayer;local b=a:GetMouse()local c={playerToFling}local d=game:GetService("Players")local e=d.LocalPlayer;local f=false;local g=function(h)local i=e.Character;local j=i and i:FindFirstChildOfClass("Humanoid")local k=j and j.RootPart;local l=h.Character;local m;local n;local o;local p;local q;if l:FindFirstChildOfClass("Humanoid")then m=l:FindFirstChildOfClass("Humanoid")end;if m and m.RootPart then n=m.RootPart end;if l:FindFirstChild("Head")then o=l.Head end;if l:FindFirstChildOfClass("Accessory")then p=l:FindFirstChildOfClass("Accessory")end;if p and p:FindFirstChild("Handle")then q=p.Handle end;if i and j and k then if k.Velocity.Magnitude<50 then getgenv().OldPos=k.CFrame end;if m and m.Sit and not f then end;if o then if o.Velocity.Magnitude>500 then fu.dialog("Player flung","Player is already flung. Fling again?",{"Fling again","No"})if fu.waitfordialog()=="No"then return fu.closedialog()end;fu.closedialog()end elseif not o and q then if q.Velocity.Magnitude>500 then fu.dialog("Player flung","Player is already flung. Fling again?",{"Fling again","No"})if fu.waitfordialog()=="No"then return fu.closedialog()end;fu.closedialog()end end;if o then workspace.CurrentCamera.CameraSubject=o elseif not o and q then workspace.CurrentCamera.CameraSubject=q elseif m and n then workspace.CurrentCamera.CameraSubject=m end;if not l:FindFirstChildWhichIsA("BasePart")then return end;local r=function(s,t,u)k.CFrame=CFrame.new(s.Position)*t*u;i:SetPrimaryPartCFrame(CFrame.new(s.Position)*t*u)k.Velocity=Vector3.new(9e7,9e7*10,9e7)k.RotVelocity=Vector3.new(9e8,9e8,9e8)end;local v=function(s)local w=2;local x=tick()local y=0;repeat if k and m then if s.Velocity.Magnitude<50 then y=y+100;r(s,CFrame.new(0,1.5,0)+m.MoveDirection*s.Velocity.Magnitude/1.25,CFrame.Angles(math.rad(y),0,0))task.wait()r(s,CFrame.new(0,-1.5,0)+m.MoveDirection*s.Velocity.Magnitude/1.25,CFrame.Angles(math.rad(y),0,0))task.wait()r(s,CFrame.new(2.25,1.5,-2.25)+m.MoveDirection*s.Velocity.Magnitude/1.25,CFrame.Angles(math.rad(y),0,0))task.wait()r(s,CFrame.new(-2.25,-1.5,2.25)+m.MoveDirection*s.Velocity.Magnitude/1.25,CFrame.Angles(math.rad(y),0,0))task.wait()r(s,CFrame.new(0,1.5,0)+m.MoveDirection,CFrame.Angles(math.rad(y),0,0))task.wait()r(s,CFrame.new(0,-1.5,0)+m.MoveDirection,CFrame.Angles(math.rad(y),0,0))task.wait()else r(s,CFrame.new(0,1.5,m.WalkSpeed),CFrame.Angles(math.rad(90),0,0))task.wait()r(s,CFrame.new(0,-1.5,-m.WalkSpeed),CFrame.Angles(0,0,0))task.wait()r(s,CFrame.new(0,1.5,m.WalkSpeed),CFrame.Angles(math.rad(90),0,0))task.wait()r(s,CFrame.new(0,1.5,n.Velocity.Magnitude/1.25),CFrame.Angles(math.rad(90),0,0))task.wait()r(s,CFrame.new(0,-1.5,-n.Velocity.Magnitude/1.25),CFrame.Angles(0,0,0))task.wait()r(s,CFrame.new(0,1.5,n.Velocity.Magnitude/1.25),CFrame.Angles(math.rad(90),0,0))task.wait()r(s,CFrame.new(0,-1.5,0),CFrame.Angles(math.rad(90),0,0))task.wait()r(s,CFrame.new(0,-1.5,0),CFrame.Angles(0,0,0))task.wait()r(s,CFrame.new(0,-1.5,0),CFrame.Angles(math.rad(-90),0,0))task.wait()r(s,CFrame.new(0,-1.5,0),CFrame.Angles(0,0,0))task.wait()end else break end until s.Velocity.Magnitude>500 or s.Parent~=h.Character or h.Parent~=d or h.Character~=l or m.Sit or j.Health<=0 or tick()>x+w end;workspace.FallenPartsDestroyHeight=0/0;local z=Instance.new("BodyVelocity")z.Name="EpixVel"z.Parent=k;z.Velocity=Vector3.new(9e8,9e8,9e8)z.MaxForce=Vector3.new(1/0,1/0,1/0)j:SetStateEnabled(Enum.HumanoidStateType.Seated,false)if n and o then if(n.CFrame.p-o.CFrame.p).Magnitude>5 then v(o)else v(n)end elseif n and not o then v(n)elseif not n and o then v(o)elseif not n and not o and p and q then v(q)else fu.notification("Can't find a proper part of target player to fling.")end;z:Destroy()j:SetStateEnabled(Enum.HumanoidStateType.Seated,true)workspace.CurrentCamera.CameraSubject=j;repeat k.CFrame=getgenv().OldPos*CFrame.new(0,.5,0)i:SetPrimaryPartCFrame(getgenv().OldPos*CFrame.new(0,.5,0))j:ChangeState("GettingUp")table.foreach(i:GetChildren(),function(A,B)if B:IsA("BasePart")then B.Velocity,B.RotVelocity=Vector3.new(),Vector3.new()end end)task.wait()until(k.Position-getgenv().OldPos.p).Magnitude<25;workspace.FallenPartsDestroyHeight=getgenv().FPDH else fu.notification("No valid character of said target player. May have died.")end end;g(c[1])
+end
+
+
+local tabMain = DrRayLibrary.newTab("Main", "http://www.roblox.com/asset/?id=9405923687")
+tabMain.newButton("Copy Discord Link", "Join Dc For Free Bobuc :0", function()
+setclipboard("discord.gg/vexonhub")
+end)
+tabMain.newLabel("Autos")
+--// auto void/place \\--
+local TeleportPozisyon = Vector3.new(150, -495, 30)
+
+tabMain.newDropdown("AutoPlace DropDown", "Where Do You Want It To Auto Place?", {
+    "Map", "Pixel", "Void", "Darkness", "Montain", "Counter", "Atomic Base", "Atomic Base Up", "Atomic Slash", "Prison"
+}, function(selectedText)
+    if selectedText == "Map" then
+        TeleportPozisyon = Vector3.new(150, 505, 30)
+    elseif selectedText == "Pixel" then
+        TeleportPozisyon = Vector3.new(30000000, 30000000, 30000000)
+    elseif selectedText == "Void" then
+        TeleportPozisyon = Vector3.new(150, -495, 30)
+    elseif selectedText == "Darkness" then
+        TeleportPozisyon = Vector3.new(0, 900000000002, 0)
+    elseif selectedText == "Montain" then
+        TeleportPozisyon = Vector3.new(155.577392578125, 628.742431640625, -447.93841552734375)
+    elseif selectedText == "Counter" then
+        TeleportPozisyon = Vector3.new(-68, 29, 20346)
+    elseif selectedText == "Atomic Base" then
+        TeleportPozisyon = Vector3.new(1063, 30, 23006)
+    elseif selectedText == "Atomic Base Up" then
+        TeleportPozisyon = Vector3.new(1063, 405, 23006)
+    elseif selectedText == "Atomic Slash" then
+        TeleportPozisyon = Vector3.new(1063, 131, 23006)
+    elseif selectedText == "Prison" then
+        TeleportPozisyon = Vector3.new(438, 439, -376)
+    end
+end)
+
+local animasyonlar = {
+    {id = "12273188754", timewait = 0.5},
+    {id = "12296113986", timewait = 0.5},
+    {id = "15145462680", timewait = 1.5},
+    {id = "16139108718", timewait = 0.1},
+    {id = "17889080495", timewait = 0},
+    {id = "14705929107", timewait = 1.3},
+    {id = "14701242661", timewait = 3},
+    {id = "14920779925", timewait = 0.2},
+    {id = "16062712948", timewait = 1}
+}
+
+local oyuncu = game.Players.LocalPlayer
+local karakter = oyuncu.Character or oyuncu.CharacterAdded:Wait()
+local toggleAcik = false
+local animasyonOynuyor = false
+local geriTP = false -- Geri TP toggle başlangıçta kapalı
+
+tabMain.newToggle("Auto Place/Void", "Select Place With DropDown", false, function(toggleState)
+    toggleAcik = toggleState
+end)
+
+tabMain.newToggle("Tp Back Old Pos", "When Auto Place is Finished, You Teleport Back to Your Old Place", false, function(state)
+    geriTP = state
+end)
+
+local function karakterGuncelle(yeniKarakter)
+    karakter = yeniKarakter
+    local hrp = karakter:WaitForChild("HumanoidRootPart")
+    local humanoid = karakter:WaitForChild("Humanoid")
+    humanoid.AnimationPlayed:Connect(function(animasyonTrack)
+        if not toggleAcik or animasyonOynuyor then return end
+        local animasyon = animasyonTrack.Animation
+        if not animasyon then return end
+        for _, anim in ipairs(animasyonlar) do
+            if animasyon.AnimationId == "rbxassetid://" .. anim.id then
+                animasyonOynuyor = true
+                local animasyonBaslangicPozisyonu = hrp.CFrame
+                task.wait(anim.timewait)
+                if karakter and karakter.Parent and toggleAcik then
+                    hrp.CFrame = CFrame.new(TeleportPozisyon)
+                    animasyonTrack.Stopped:Wait()
+                    if karakter and karakter.Parent and toggleAcik and geriTP then
+                        hrp.CFrame = animasyonBaslangicPozisyonu
+                    end
+                end
+                animasyonOynuyor = false
+                break
+            end
+        end
+    end)
+end
+
+oyuncu.CharacterAdded:Connect(karakterGuncelle)
+if oyuncu.Character then
+    karakterGuncelle(oyuncu.Character)
+end
+
+workspace.FallenPartsDestroyHeight = 0 / 0
+
+local animations = {
+    ["rbxassetid://11343250001"] = 0
+}
+
+function ifind(t, a)
+    for i, v in pairs(t) do
+        if i == a then
+            return i
+        end
+    end
+    return false
+end
+
+local plr = game.Players.LocalPlayer
+local toggleState = false
+
+local function startScript()
+    getgenv().loop = coroutine.create(function()
+        local dothetech = false
+        local startPosition
+        local targetPosition = Vector3.new(0, -499, 0)
+        local Camera = game.Workspace.CurrentCamera
+        while task.wait() do
+            local character = plr.Character
+            local animate = character:WaitForChild("Humanoid"):WaitForChild("Animator")
+            for i, v in pairs(animate:GetPlayingAnimationTracks()) do
+                if ifind(animations, v.Animation.AnimationId) and not dothetech then
+                    task.wait(animations[v.Animation.AnimationId])
+                    dothetech = true
+                    startPosition = character.HumanoidRootPart.Position
+                    v.Stopped:Connect(function()
+                        dothetech = false
+                    end)
+                    repeat
+                        wait()
+                        character.HumanoidRootPart.CFrame = CFrame.new(targetPosition)
+                        task.wait(3)
+                        character.HumanoidRootPart.CFrame = CFrame.new(startPosition)
+                        task.wait(0.1)
+                        Camera.CameraType = Enum.CameraType.Custom
+                        plr.CameraMode = Enum.CameraMode.Classic
+                    until not dothetech
+                    task.wait(10)
+                end
+            end
+        end
+    end)
+    coroutine.resume(getgenv().loop)
+end
+
+local function stopScript()
+    if getgenv().loop then
+        coroutine.resume(getgenv().loop)
+        getgenv().loop = nil
+    end
+end
+
+plr.CharacterAdded:Connect(function()
+    if toggleState then
+        startScript()
+    end
+end)
+
+
+
+
+--// Auto Dunk \\--
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local targetAnimationId = "rbxassetid://12296113986"
+local isToggleActive = false
+
+local function onAnimationPlayed()
+    humanoid.AnimationPlayed:Connect(function(animationTrack)
+        local animationId = animationTrack.Animation.AnimationId
+        if animationId == targetAnimationId and isToggleActive then
+            wait(1.2)
+            local rootPart = character:WaitForChild("HumanoidRootPart")
+            local currentPosition = rootPart.Position
+            rootPart.CFrame = CFrame.new(currentPosition.X, currentPosition.Y + 100, currentPosition.Z)
+        end
+    end)
+end
+
+player.CharacterAdded:Connect(function(newCharacter)
+    character = newCharacter
+    humanoid = character:WaitForChild("Humanoid")
+    onAnimationPlayed()
+end)
+
+onAnimationPlayed()
+
+tabMain.newToggle("Auto Whirlwind Dunk", "Garou Second Move Extra Damage", false, function(toggleState)
+    isToggleActive = toggleState
+end)
+
+
+
+
+
+
+-- auto wallcombo --
+local lp = game:GetService("Players").LocalPlayer
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local connection
+local charConnection
+
+local function pressFKey()
+    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Q, false, game)
+    task.wait(0.1)
+    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Q, false, game)
+end
+
+local function setupWallCombo(char)
+    if connection then connection:Disconnect() end
+
+    connection = char.DescendantAdded:Connect(function(v)
+        if v:IsA("ObjectValue") and v.Name:lower() == "wallcombo" then
+            local start = tick()
+            repeat
+                pressFKey()
+                task.wait()
+            until v.Parent ~= char or tick() >= start + (v:GetAttribute("DeleteMe") or 0.6)
+        end
+    end)
+end
+
+local function startWallCombo()
+    if lp.Character then
+        setupWallCombo(lp.Character)
+    end
+
+    charConnection = lp.CharacterAdded:Connect(function(newChar)
+        setupWallCombo(newChar)
+    end)
+end
+
+local function stopWallCombo()
+    if connection then
+        connection:Disconnect()
+        connection = nil
+    end
+    if charConnection then
+        charConnection:Disconnect()
+        charConnection = nil
+    end
+end
+
+tabMain.newToggle("Auto WallCombo", "Automatic Makes Wallcombo (By _1.8e308)", false, function(toggleState)
+    if toggleState then
+        startWallCombo()
+    else
+        stopWallCombo()
+    end
+end)
+
+
+
+
+tabMain.newLabel("Antis")
+
+
+local animationIds = {
+    ["136370737633649"] = true,
+    ["18182425133"] = true
+}
+
+local runService = game:GetService("RunService")
+local players = game:GetService("Players")
+local toggleEnabled = false
+
+local function forceStopAnimations()
+    if not toggleEnabled then return end
+
+    for _, player in ipairs(players:GetPlayers()) do
+        if player.Character then
+            local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                local animator = humanoid:FindFirstChildOfClass("Animator")
+                if animator then
+                    for _, track in ipairs(animator:GetPlayingAnimationTracks()) do
+                        local anim = track.Animation
+                        if anim then
+                            local animId = anim.AnimationId:gsub("rbxassetid://", "")
+                            if animationIds[animId] then
+                                track:Stop()
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+
+runService.RenderStepped:Connect(forceStopAnimations)
+
+tabMain.newToggle("Anti Invisibility", "Makes People Visible Using Invisibility Exploit", false, function(toggleState)
+    toggleEnabled = toggleState
+end)
+
+
+--// Anti Dc \\--
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local humanoid = character:WaitForChild("Humanoid")
+
+local targetPosition = Vector3.new(1000, -499, 1000)
+local targetRotation = CFrame.Angles(math.rad(90), 0, 0)
+local animationId = "rbxassetid://11343250001"
+local toggleEnabled = false
+local activeConnection = nil
+local humanoidConnection = nil
+
+local function setupCharacter(newCharacter)
+    character = newCharacter
+    humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    humanoid = character:WaitForChild("Humanoid")
+
+    -- Önceki bağlantıyı kes (eski karakterden kalan bağlantılar sorun çıkarabilir)
+    if humanoidConnection then
+        humanoidConnection:Disconnect()
+    end
+
+    -- Yeni karakterin animasyonlarını dinle
+    humanoidConnection = humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+end
+
+local originalCFrame = humanoidRootPart.CFrame
+
+function onAnimationPlayed(track)
+    if not toggleEnabled then return end
+    if track.Animation.AnimationId == animationId then
+        originalCFrame = humanoidRootPart.CFrame -- Pozisyonu kaydet
+
+        local startTime = tick()
+        local duration = 3
+
+        if activeConnection then
+            activeConnection:Disconnect()
+        end
+
+        activeConnection = RunService.Heartbeat:Connect(function()
+            if not toggleEnabled then
+                activeConnection:Disconnect()
+                activeConnection = nil
+                return
+            end
+
+            local elapsedTime = tick() - startTime
+            if elapsedTime >= duration then
+                activeConnection:Disconnect()
+                activeConnection = nil
+
+                humanoidRootPart.CFrame = originalCFrame
+                wait(1)
+                humanoidRootPart.CFrame = originalCFrame
+
+                local lockStartTime = tick()
+                local lockConnection
+                lockConnection = RunService.Heartbeat:Connect(function()
+                    if tick() - lockStartTime >= 0.5 or not toggleEnabled then
+                        lockConnection:Disconnect()
+                        if toggleEnabled then
+                            task.delay(0, function()
+                                loadstring(game:HttpGet("https://pastefy.app/IrvnCaF2/raw"))()
+                            end)
+                        end
+                        return
+                    end
+                end)
+
+                return
+            end
+            humanoidRootPart.CFrame = CFrame.new(targetPosition) * targetRotation
+        end)
+    end
+end
+
+-- İlk bağlantıyı yap
+humanoidConnection = humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+-- Karakter yeniden doğarsa bağlantıları yenile
+player.CharacterAdded:Connect(setupCharacter)
+
+tabMain.newToggle("Anti Death Counter", "ByPass DeathCounter", false, function(toggleState)
+    toggleEnabled = toggleState
+
+    if not toggleState and activeConnection then
+        activeConnection:Disconnect()
+        activeConnection = nil
+    end
+end)
+
+
+local antiAfkConnection
+
+tabMain.newToggle("Anti-AFK", "Doesn't kick after being afk for 20 minutes", false, function(toggleState)
+    if toggleState then
+        
+        antiAfkConnection = game:GetService("Players").LocalPlayer.Idled:Connect(function()
+            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+            task.wait(10)
+            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+        end)
+    else
+        
+        if antiAfkConnection then
+            antiAfkConnection:Disconnect()
+            antiAfkConnection = nil
+        end
+    end
+end)
+
+
+tabMain.newLabel("OP")
+
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+
+local toggleEnabled = false
+local animConnection
+local charConnection
+
+-- 9 farklı animasyon ID'si
+local targetAnimations = { 
+    "rbxassetid://17325537719", -- KJ
+    "rbxassetid://10469643643", -- saitama
+    "rbxassetid://13294471966", -- gaoru
+    "rbxassetid://13295936866", -- genos
+    "rbxassetid://13378708199", -- sonic
+    "rbxassetid://14136436157", -- metalbat
+    "rbxassetid://15162694192", -- atomic samurai
+    "rbxassetid://16552234590", -- tatsumaki
+    "rbxassetid://17889290569"  -- suirui
+}
+
+-- Animasyon ID'si listede mi?
+local function isTargetAnimation(animId)
+    for _, id in ipairs(targetAnimations) do
+        if animId == id then
+            return true
+        end
+    end
+    return false
+end
+
+-- Karakter için animasyon algılayıcı kur
+local function setupAnimationDetection(char)
+    local humanoid = char:FindFirstChildOfClass("Humanoid")
+    if not humanoid then return end
+
+    animConnection = humanoid.AnimationPlayed:Connect(function(animationTrack)
+        if toggleEnabled and animationTrack.Animation and isTargetAnimation(animationTrack.Animation.AnimationId) then
+            local hrp = char:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                local originalCFrame = hrp.CFrame
+                local startTime = tick()
+
+                local heartbeatConnection
+                heartbeatConnection = RunService.Heartbeat:Connect(function()
+                    if not toggleEnabled or tick() - startTime >= 0.3 then
+                        hrp.CFrame = originalCFrame
+                        heartbeatConnection:Disconnect()
+                    else
+                        hrp.CFrame = originalCFrame * CFrame.Angles(math.rad(-25), 0, 0)
+                    end
+                end)
+            end
+        end
+    end)
+end
+
+-- Toggle açıkken karakter bağlanması
+local function startDetection()
+    if LocalPlayer.Character then
+        setupAnimationDetection(LocalPlayer.Character)
+    end
+
+    charConnection = LocalPlayer.CharacterAdded:Connect(function(char)
+        setupAnimationDetection(char)
+    end)
+end
+
+local function stopDetection()
+    if animConnection then
+        animConnection:Disconnect()
+        animConnection = nil
+    end
+    if charConnection then
+        charConnection:Disconnect()
+        charConnection = nil
+    end
+end
+
+-- Toggle UI
+tabMain.newToggle("WallCombo Everywhere", "Use Auto WallCombo!!! (not work for some characters)", false, function(state)
+    toggleEnabled = state
+    if state then
+        startDetection()
+    else
+        stopDetection()
+    end
+end)
+
+
+--// No Cd Dash \\--
+tabMain.newToggle("No Dash Cd", "Dash No CoolDown", false, function(toggleState)
+    if toggleState then
+        workspace:SetAttribute("EffectAffects", 1)
+        workspace:SetAttribute("NoDashCooldown", true)
+    else
+        workspace:SetAttribute("EffectAffects", 0)
+        workspace:SetAttribute("NoDashCooldown", false)
+    end
+end)
+
+--// invis \\--
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local animator = humanoid:FindFirstChildOfClass("Animator")
+
+local blockAnimationId = "rbxassetid://136370737633649"
+local playAnimationId = "rbxassetid://136370737633649"
+local startAtSecond = 4.56
+local animSpeed = 0
+
+local animTrack
+local isToggleEnabled = false
+
+
+local function setCharacterTransparency(transparency)
+    if character then
+        local parts = {"Head", "Torso", "Left Arm", "Right Arm", "Left Leg", "Right Leg"}
+        for _, partName in ipairs(parts) do
+            local part = character:FindFirstChild(partName)
+            if part and part:IsA("BasePart") then
+                part.Transparency = transparency
+            end
+        end
+    end
+end
+
+
+local function playAnimation()
+    if not animTrack or not animTrack.IsPlaying then
+        local anim = Instance.new("Animation")
+        anim.AnimationId = playAnimationId
+        animTrack = animator:LoadAnimation(anim)
+        animTrack:Play()
+        animTrack.TimePosition = startAtSecond
+        animTrack:AdjustSpeed(animSpeed)
+    end
+end
+
+
+local function stopAnimation()
+    if animTrack and animTrack.IsPlaying then
+        animTrack:Stop()
+        animTrack = nil
+    end
+end
+
+
+tabMain.newToggle("Invisiblity", "Almost All Bugs Fixed And Works Well ;3", false, function(toggleState)
+    isToggleEnabled = toggleState
+
+    if isToggleEnabled then
+        setCharacterTransparency(0.5)
+    else
+        setCharacterTransparency(0)
+        stopAnimation()
+    end
+end)
+
+
+RunService.RenderStepped:Connect(function()
+    if isToggleEnabled and animTrack and animTrack.IsPlaying then
+        stopAnimation()
+    end
+end)
+
+
+RunService.Heartbeat:Connect(function()
+    if isToggleEnabled then
+        playAnimation()
+    end
+end)
+
+
+local function onCharacterAdded(newCharacter)
+    character = newCharacter
+    humanoid = character:WaitForChild("Humanoid")
+    animator = humanoid:FindFirstChildOfClass("Animator")
+
+    humanoid.Died:Connect(function()
+        if isToggleEnabled then
+            stopAnimation()
+        end
+    end)
+
+    if isToggleEnabled then
+        setCharacterTransparency(0.5) 
+        playAnimation() 
+    end
+end
+
+player.CharacterAdded:Connect(onCharacterAdded)
+
+tabMain.newLabel("ESP")
+local Players = game:GetService("Players")
+
+local function AddSkullToPlayer(player)
+    local character = player.Character
+    if character and character:FindFirstChild("Head") then
+        local head = character.Head
+        local billboard = Instance.new("BillboardGui")
+        billboard.Size = UDim2.new(5, 0, 5, 0) 
+        billboard.Adornee = head
+        billboard.Parent = head
+        billboard.AlwaysOnTop = true
+
+        local skullText = Instance.new("TextLabel")
+        skullText.Size = UDim2.new(1, 0, 1, 0)
+        skullText.Text = "\xF0\x9F\x92\x80" 
+        skullText.TextSize = 50
+        skullText.BackgroundTransparency = 0
+        skullText.TextColor3 = Color3.fromRGB(200, 200, 200)
+        skullText.Parent = billboard
+
+        return billboard
+    end
+end
+
+
+local function CheckPlayers()
+    for _, player in pairs(Players:GetPlayers()) do
+        local character = player.Character
+        if character and character:FindFirstChild("Counter") then
+            if not player:FindFirstChild("SkullBillboard") then
+                local billboard = AddSkullToPlayer(player)
+                local skullBillboard = Instance.new("ObjectValue")
+                skullBillboard.Name = "SkullBillboard"
+                skullBillboard.Value = billboard
+                skullBillboard.Parent = player
+            end
+        elseif player:FindFirstChild("SkullBillboard") then
+            local skullBillboard = player:FindFirstChild("SkullBillboard")
+            if skullBillboard and skullBillboard.Value then
+                skullBillboard.Value:Destroy()
+                skullBillboard:Destroy()
+            end
+        end
+    end
+end
+
+local running = false
+
+tabMain.newToggle("Esp Death Counter", "Esp With Skull Emoji To DeathCounter Users", false, function(toggleState)
+    running = toggleState
+
+    if running then
+        while running do
+            CheckPlayers()
+            wait(1)
+        end
+    else
+    end
+end)
+
+--// Esp Ult Bar \\--
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local UltimateTagEnabled = false 
+
+function createTag(character, player)
+    if not UltimateTagEnabled then return end  
+
+    local head = character:FindFirstChild("Head")
+    if not head then return end
+
+    if head:FindFirstChild("UltimateTag") then return end
+
+    local billboard = Instance.new("BillboardGui")
+    billboard.Name = "UltimateTag"
+    billboard.Size = UDim2.new(0, 100, 0, 50)
+    billboard.StudsOffset = Vector3.new(0, 3.5, 0)
+    billboard.AlwaysOnTop = true
+    billboard.Adornee = head
+    billboard.Parent = head
+
+    local textLabel = Instance.new("TextLabel", billboard)
+    textLabel.Size = UDim2.new(1, 0, 1, 0)
+    textLabel.BackgroundTransparency = 0.5
+    textLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+    textLabel.TextScaled = true
+    textLabel.Font = Enum.Font.GothamBold
+
+    local function updateText()
+        local value = player:GetAttribute("Ultimate")
+        if value ~= nil then
+            textLabel.Text = "" .. tostring(math.floor(value))
+        else
+            textLabel.Text = "nil"
+        end
+    end
+
+    updateText()
+    player:GetAttributeChangedSignal("Ultimate"):Connect(updateText)
+end
+
+local function onCharacterAdded(character, player)
+    if not UltimateTagEnabled then return end  
+
+    task.wait(1)
+    if not character then return end
+    createTag(character, player)
+end
+
+local function onPlayerAdded(player)
+    player.CharacterAdded:Connect(function(character)
+        onCharacterAdded(character, player)
+    end)
+
+    if player.Character then
+        onCharacterAdded(player.Character, player)
+    end
+end
+
+tabMain.newToggle("Esp Ult Bar", "Shows The Ult Bar Of Players On The Server", false, function(toggleState)
+    UltimateTagEnabled = toggleState
+
+    if toggleState then
+        for _, player in pairs(Players:GetPlayers()) do
+            if player.Character then
+                createTag(player.Character, player)
+            end
+        end
+    else
+        for _, player in pairs(Players:GetPlayers()) do
+            if player.Character then
+                local head = player.Character:FindFirstChild("Head")
+                if head then
+                    local tag = head:FindFirstChild("UltimateTag")
+                    if tag then
+                        tag:Destroy()
+                    end
+                end
+            end
+        end
+    end
+end)
+
+for _, player in pairs(Players:GetPlayers()) do
+    onPlayerAdded(player)
+end
+
+Players.PlayerAdded:Connect(onPlayerAdded)
+
+
+
+
+--// esp Everyone \\--
+local c = workspace.CurrentCamera local ps = game:GetService("Players") local lp = ps.LocalPlayer local rs = game:GetService("RunService")
+
+local espEnabled = false local espObjects = {}
+
+local function esp(p, cr) if not espEnabled then return end
+
+local h = cr:WaitForChild("Humanoid")
+local hrp = cr:WaitForChild("Head")
+
+local text = Drawing.new("Text")
+text.Visible = false
+text.Center = true
+text.Outline = true 
+text.OutlineColor = Color3.new(0, 0, 0) 
+text.Font = 3 
+text.Size = 18 
+text.Color = Color3.fromRGB(255, 255, 255)
+
+local function getInfo()
+    local ping = math.floor(p:GetAttribute("Ping") or 0) 
+    local deviceType = p:GetAttribute("Mobile") and "Mobile" or "PC"
+    return "[ " .. p.Name .. " | Ping: " .. ping .. " | " .. deviceType .. " ]"
+end
+
+local connection1, connection2, connection3
+
+local function removeESP()
+    text.Visible = false
+    text:Remove()
+    if connection1 then connection1:Disconnect() end
+    if connection2 then connection2:Disconnect() end
+    if connection3 then connection3:Disconnect() end
+end
+
+connection2 = cr.AncestryChanged:Connect(function(_, parent)
+    if not parent then removeESP() end
+end)
+
+connection3 = h.Died:Connect(function()
+    removeESP()
+end)
+
+connection1 = rs.RenderStepped:Connect(function()
+    if not espEnabled then removeESP() return end
+    
+    local hrp_pos, hrp_onscreen = c:WorldToViewportPoint(hrp.Position)
+    if hrp_onscreen then
+        text.Position = Vector2.new(hrp_pos.X, hrp_pos.Y - 27)
+        text.Text = getInfo()
+        text.Visible = true
+    else
+        text.Visible = false
+    end
+end)
+
+espObjects[p] = { text, connection1, connection2, connection3 }
+
+end
+
+local function p_added(p) if espEnabled and p.Character then esp(p, p.Character) end p.CharacterAdded:Connect(function(cr) if espEnabled then esp(p, cr) end end) end
+
+local function clearESP() for _, objects in pairs(espObjects) do if objects[1] then objects[1]:Remove() end for i = 2, #objects do if objects[i] then objects[i]:Disconnect() end end end espObjects = {} end
+
+local function toggleESP(state) espEnabled = state if espEnabled then for _, p in pairs(ps:GetPlayers()) do if p ~= lp then p_added(p) end end else clearESP() end end
+
+ps.PlayerAdded:Connect(p_added) ps.PlayerRemoving:Connect(function(p) if espObjects[p] then for _, obj in pairs(espObjects[p]) do if typeof(obj) == "Instance" then obj:Remove() elseif typeof(obj) == "RBXScriptConnection" then obj:Disconnect() end end espObjects[p] = nil end end)
+
+
+local c = workspace.CurrentCamera local ps = game:GetService("Players") local lp = ps.LocalPlayer local rs = game:GetService("RunService")
+
+local espEnabled = false local espObjects = {}
+
+local function esp(p, cr) if not espEnabled then return end
+
+local h = cr:WaitForChild("Humanoid")
+local hrp = cr:WaitForChild("Head")
+
+local text = Drawing.new("Text")
+text.Visible = false
+text.Center = true
+text.Outline = true 
+text.OutlineColor = Color3.new(0, 0, 0) 
+text.Font = 3 
+text.Size = 18 
+text.Color = Color3.fromRGB(255, 255, 255)
+
+local function getInfo()
+    local ping = math.floor(p:GetAttribute("Ping") or 0)  
+    local deviceType = p:GetAttribute("Mobile") and "Mobile" or "PC"
+    
+    local currentStreak = 0
+    local player = game.Workspace:FindFirstChild("Live") and game.Workspace.Live:FindFirstChild(p.Name)
+    if player then
+        currentStreak = player:GetAttribute("CurrentStreak") or 0
+    end
+
+    return "[ " .. p.Name .. " | Ping: " .. ping .. " | " .. deviceType .. " | Streak: " .. currentStreak .. " ]"
+end
+
+local connection1, connection2, connection3
+
+local function removeESP()
+    text.Visible = false
+    text:Remove()
+    if connection1 then connection1:Disconnect() end
+    if connection2 then connection2:Disconnect() end
+    if connection3 then connection3:Disconnect() end
+end
+
+connection2 = cr.AncestryChanged:Connect(function(_, parent)
+    if not parent then removeESP() end
+end)
+
+connection3 = h.HealthChanged:Connect(function(v)
+    if (v <= 0) or (h:GetState() == Enum.HumanoidStateType.Dead) then
+        removeESP()
+    end
+end)
+
+connection1 = rs.RenderStepped:Connect(function()
+    if not espEnabled then removeESP() return end
+    
+    local hrp_pos, hrp_onscreen = c:WorldToViewportPoint(hrp.Position)
+    if hrp_onscreen then
+        text.Position = Vector2.new(hrp_pos.X, hrp_pos.Y - 27)
+        text.Text = getInfo()
+        text.Visible = true
+    else
+        text.Visible = false
+    end
+end)
+
+espObjects[p] = { text, connection1, connection2, connection3 }
+
+end
+
+local function p_added(p) if espEnabled and p.Character then esp(p, p.Character) end p.CharacterAdded:Connect(function(cr) if espEnabled then esp(p, cr) end end) end
+
+local function clearESP() for _, objects in pairs(espObjects) do if objects[1] then objects[1]:Remove() end for i = 2, #objects do if objects[i] then objects[i]:Disconnect() end end end espObjects = {} end
+
+local function toggleESP(state) espEnabled = state if espEnabled then for _, p in pairs(ps:GetPlayers()) do if p ~= lp then p_added(p) end end else clearESP() end end
+
+ps.PlayerAdded:Connect(p_added) ps.PlayerRemoving:Connect(function(p) if espObjects[p] then for _, obj in pairs(espObjects[p]) do if typeof(obj) == "Instance" then obj:Remove() elseif typeof(obj) == "RBXScriptConnection" then obj:Disconnect() end end espObjects[p] = nil end end)
+
+
+tabMain.newToggle("ESP Everyone", "Esp Ping/Name/Device/Streak", false, function(toggleState) toggleESP(toggleState) end)
+
+tabMain.newLabel("Movement")
+
+
+--// Speed \\--
+local UIS = game:GetService("UserInputService")
+local toggleState = false
+local speedValue = 9 -- Varsayılan hız
+
+local function toggleWalkSpeed(state)
+    toggleState = state
+    getgenv().WalkspeedBypass = toggleState
+    if toggleState then
+        task.spawn(function()
+            while getgenv().WalkspeedBypass == true and game:GetService("Players").LocalPlayer do
+                pcall(function()
+                    local chr = game:GetService("Players").LocalPlayer.Character
+                    if chr then
+                        local hum = chr:FindFirstChildWhichIsA("Humanoid");
+                        if hum and hum.Parent then
+                            local hb = game:GetService("RunService").Heartbeat
+                            local delta = hb:Wait()
+                            if hum.MoveDirection.Magnitude > 0 then
+                                chr:TranslateBy(hum.MoveDirection * speedValue * delta * 7);
+                            else
+                                chr:TranslateBy(hum.MoveDirection * delta * 7);
+                            end
+                        end
+                    end
+                end)
+                task.wait(0.0015);
+            end
+        end)
+    end
+end
+
+tabMain.newToggle("Speed", "On/Off With V Key", false, function(Value)
+    toggleWalkSpeed(Value)
+end)
+
+tabMain.newSlider("Speed Boost Value", "Speed Multiplier", 100, true, function(value)
+    speedValue = value
+end)
+
+UIS.InputBegan:Connect(function(input, gameProcessedEvent)
+    if input.KeyCode == Enum.KeyCode.V and not gameProcessedEvent then
+        toggleWalkSpeed(not toggleState)
+    end
+end)
+
+
+
+--// Jump \\--
+local teleportDistance = 200 -- Varsayılan teleport mesafesi 200
+
+tabMain.newToggle("Jump", "Teleport Super Jump", false, function(Value)
+    getgenv().JumpPowerBypass = Value
+    task.spawn(function()
+        while getgenv().JumpPowerBypass == true do
+            pcall(function()
+                if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetState() == Enum.HumanoidStateType.Jumping then
+                    -- Teleport mesafesini slider'dan alınan değeri kullanarak ayarla
+                    game.Players.LocalPlayer.Character.Humanoid.RootPart.CFrame = game.Players.LocalPlayer.Character.Humanoid.RootPart.CFrame * CFrame.new(0, teleportDistance, 0)
+                end
+            end)
+            task.wait(0.0015)
+        end
+    end)
+end)
+
+tabMain.newSlider("Jump Boost Value", "Epic slider", 1000, false, function(num)
+    teleportDistance = num -- Slider'dan alınan değerle teleport mesafesini güncelle
+end)
+
+
+--// No Stun \\--
+tabMain.newToggle("NoStun","Disables All Stuns",false,function(Value)
+    getgenv().AutoNoSlow = Value
+
+    task.spawn(function()
+        local connection
+        connection = game:GetService("RunService").RenderStepped:Connect(function()
+            if getgenv().AutoNoSlow == true then
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25;
+                end)
+            else
+                connection:Disconnect();
+            end
+        end)
+    end)
+end)
+
+tabMain.newLabel("Normal")
+
+
+
+--// Fake DownSlam\\--
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local toggleEnabled = fasle
+
+tabMain.newToggle("Fake Downslam", "Plays a Fake Downslam Animation When Jumping", false, function(toggleState)
+    toggleEnabled = toggleState
+    if toggleState then
+    else
+    end
+end)
+
+local function setupCharacter(character)
+    local humanoid = character:WaitForChild("Humanoid")
+
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://10470104242"
+    local animationTrack = humanoid:LoadAnimation(animation)
+
+    humanoid.StateChanged:Connect(function(oldState, newState)
+        if toggleEnabled and newState == Enum.HumanoidStateType.Jumping then
+            task.wait(0.3)
+            animationTrack:Play()
+        end
+    end)
+end
+
+
+if player.Character then
+    setupCharacter(player.Character)
+end
+
+
+player.CharacterAdded:Connect(setupCharacter)
+
+
+--// Auto Safe zone \\--
+tabMain.newToggle("Auto Safe Zone","Auto Tp SafeZone While Low Heal",false,function(Value)
+    getgenv().AutoReturnSafeZone = Value
+
+    local X = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;
+    local Teleported = false;
+    
+    task.spawn(function()
+        while getgenv().AutoReturnSafeZone == true do
+            pcall(function()
+                if workspace.Live[game.Players.LocalPlayer.Name]:FindFirstChild("Humanoid").Health < 45 and not Teleported then
+                    X = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150, 705, 30);
+                    Teleported = true;
+                elseif workspace.Live[game.Players.LocalPlayer.Name]:FindFirstChild("Humanoid").Health == 75 and Teleported then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = X;
+                    Teleported = false;
+                end
+            end)
+            task.wait(0.15);
+        end
+    end)
+end)
+
+
+
+
+--// Long Dash \\--
+local forwardAnimations = {
+    ["rbxassetid://13380255751"] = true,
+    ["rbxassetid://10479335397"] = true
+}
+local player = game.Players.LocalPlayer
+local targetSpeed = 0
+local currentSpeed = 0
+local maxSpeed = 70
+local acceleration = 10
+local toggleActive = false 
+local rootPart, humanoid, animator
+
+
+local function setupCharacter(character)
+    rootPart = character:WaitForChild("HumanoidRootPart")
+    humanoid = character:WaitForChild("Humanoid")
+    animator = humanoid:FindFirstChild("Animator")
+end
+
+
+local function moveCharacterWithCFrame(deltaTime)
+    if not toggleActive then return end
+
+    currentSpeed = currentSpeed + (targetSpeed - currentSpeed) * math.min(acceleration * deltaTime, 1)
+
+    if currentSpeed > 0.01 then
+        local forwardDirection = rootPart.CFrame.LookVector
+        rootPart.CFrame = rootPart.CFrame + forwardDirection * currentSpeed * deltaTime
+    end
+end
+local function checkAnimations()
+    if not toggleActive then
+        targetSpeed = 0
+        return
+    end
+    if animator then
+        for _, track in pairs(animator:GetPlayingAnimationTracks()) do
+            if forwardAnimations[track.Animation.AnimationId] then
+                targetSpeed = maxSpeed
+                return
+            end
+        end
+    end
+    targetSpeed = 0
+end
+player.CharacterAdded:Connect(function(character)
+    setupCharacter(character)
+    character:WaitForChild("Humanoid").Died:Connect(function()
+        targetSpeed = 0
+        currentSpeed = 0
+    end)
+end)
+if player.Character then
+    setupCharacter(player.Character)
+end
+tabMain.newToggle("Long Dash", "Longer Dash Distance", false, function(toggleState)
+    toggleActive = toggleState
+    if toggleState then
+    else
+        targetSpeed = 0
+        currentSpeed = 0
+    end
+end)
+game:GetService("RunService").Heartbeat:Connect(function(deltaTime)
+    if rootPart and humanoid then
+        checkAnimations()
+        moveCharacterWithCFrame(deltaTime)
+    end
+end)
+
+
+
+--// Dash Effects \\--
+tabMain.newToggle("Spawn Fe Stone Effects","Use NoStun (You Cant Use Moves And Walk)",false,function(Value)
+    getgenv().AutoDashEffect = Value
+
+    task.spawn(function()
+        while getgenv().AutoDashEffect == true do
+            pcall(function()
+                local args = {[1] = {["Dash"] = Enum.KeyCode.S,["Key"] = Enum.KeyCode.Q,["Goal"] = "KeyPress"}} ;
+                game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args));
+            end)
+            task.wait(0.15);
+        end
+    end)
+end)
+
+
+
+--// Auto Toxic \\--
+tabMain.newToggle("Roast Dead Players","Auto Say Toxic Things",false,function(Value)
+    getgenv().AutoMocking = Value
+
+   
+    local AntagonizeList = {
+        "Pathetic",
+        "Nice try, loser",
+        "Git gud",
+        "You're a noob",
+        "Did you even try?",
+        "Keep dying, it's amusing",
+        "Too easy",
+        "Better luck next time",
+        "That was embarrassing",
+        "You're just feeding my kills",
+        "Can't handle the pressure?",
+        "You call that playing?",
+        "LOL, what a scrub",
+        "Go cry to your mommy",
+        "Just uninstall.",
+        "I'm not even trying.",
+        "Get rekt, scrub",
+        "You're a joke",
+        "Just stop trying.",
+        "Noob alert",
+        "Stay in the kiddie pool",
+        "Did someone forget their skills?",
+        "Do you need a tutorial?",
+        "You make this too easy.",
+        "You're not even worth my time.",
+        "I've seen toddlers play better.",
+        "You're a respawn machine",
+        "You're like a training dummy.",
+        "Did you pay to be this bad?",
+        "Even the NPCs play better than you.",
+        "You must be allergic to victory.",
+        "Your gameplay is a tutorial on how not to play.",
+        "I bet you're proud of that death streak.",
+        "You're the MVP of feeding kills.",
+        "You're like a pinata... full of free kills.",
+        "You're like a legend... in dying.",
+        "Do you think dying is a tactic?",
+        "What The Sigma.",
+        "Ez Kill LOL",
+        "hehe cry more",
+
+    }
+    
+    local LPlayer = game.Players.LocalPlayer
+    local CRoot
+    
+    local function UpdateCRoot()
+        local LChar = LPlayer.Character
+        if LChar then
+            CRoot = LChar:FindFirstChild("HumanoidRootPart");
+            if not CRoot then
+                LChar.ChildAdded:Wait();
+                CRoot = LChar:WaitForChild("HumanoidRootPart");
+            end
+        end
+    end
+    
+    local function FindNearest()
+        local Dist = 65
+        local NearestPlr = nil
+    
+        for _,v in pairs(game.Workspace.Live:GetChildren()) do
+            local Humanoid = v:FindFirstChildOfClass("Humanoid");
+            local HumanoidRoot = v:FindFirstChild("HumanoidRootPart");
+    
+            if Humanoid and HumanoidRoot and v ~= LPlayer.Character then
+                if Humanoid.Health == 0 then
+                    local Mag = (CRoot.Position - HumanoidRoot.Position).magnitude
+                    if Mag < Dist then
+                        Dist = Mag
+                        NearestPlr = HumanoidRoot
+                    end
+                end
+            end
+        end
+    
+        return NearestPlr
+    end
+
+    task.spawn(function()
+        while getgenv().AutoMocking == true  do
+            pcall(function()UpdateCRoot();
+                if CRoot then
+                    local Found = FindNearest();
+                    if Found then                    
+                        local args = { AntagonizeList[math.random(1,#AntagonizeList)],"All"};
+                        game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(unpack(args));
+                    end
+                end
+            end)
+            task.wait(2.85);
+        end
+    end)
+    
+    LPlayer.CharacterAdded:Connect(function()
+        task.wait(3);UpdateCRoot();
+    end)
+end)
+
+
+
+--// Rape Dummy \\--
+tabMain.newToggle("Rape Dummy :3","Mastered Ultra Susy Baka",false,function(Value)
+    getgenv().AutoFuckingGoku = Value
+
+    task.spawn(function()
+        if getgenv().AutoFuckingGoku == true then
+            local FuckAnimation = Instance.new("Animation");FuckAnimation.AnimationId = "rbxassetid://148840371" local k = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(FuckAnimation);k:Play();k:AdjustSpeed(6);
+        else
+            for i,v in ipairs((game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid") or game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("AnimationController")):GetPlayingAnimationTracks()) do
+                v:Stop();
+            end
+        end
+    end)
+    
+    task.spawn(function()
+        if getgenv().AutoFuckingGoku == true then
+            local GahDamn = "http://www.roblox.com/asset/?id=8448213216"
+            local Sound = Instance.new("Sound");Sound.Name = "Sound";Sound.SoundId = GahDamn
+            Sound.Volume = 10;Sound.Looped = false;Sound.Archivable = false;Sound.Parent = game.Workspace;Sound:Play();
+    
+            local Claps = "http://www.roblox.com/asset/?id=9114758204"
+            local Sound = Instance.new("Sound");Sound.Name = "Sound";Sound.SoundId = Claps
+            Sound.Volume = 10;Sound.Looped = true;Sound.Archivable = false;Sound.Parent = game.Workspace;Sound:Play();
+        else
+            for i,v in ipairs(workspace:children()) do
+                if v:isA("Sound") then
+                    v:Destroy();
+                end
+            end
+        end
+    end)
+    
+    task.spawn(function()
+        while getgenv().AutoFuckingGoku == true do
+            pcall(function()
+                local Auddy = game.Workspace.Live["Weakest Dummy"];
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Auddy.HumanoidRootPart.Position - Auddy.HumanoidRootPart.CFrame.LookVector * 1,Auddy.HumanoidRootPart.Position);
+            end)
+            task.wait(0);
+        end
+    end)
+end)
+
+
+tabMain.newLabel("By ItsLouisPlayz")
+
+tabMain.newButton("Destroy Spawned Stones For Less Lag", "By ItsLouisPlayz", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/louismich4el/ItsLouisPlayz-Scripts/main/TSB%20Anti%20Lag.lua"))()
+end)
+
+tabMain.newButton("Dodge Saitama Moves", "By ItsLouisPlayz (i will make my own soon)", function()
+DistanceToDodgeOmni_Table = 200
+loadstring(game:HttpGet("https://raw.githubusercontent.com/louismich4el/ItsLouisPlayz-Scripts/main/Auto%20Dodge%20Omni%20And%20Table.lua"))()
+end)
+
+
+local tabMisc = DrRayLibrary.newTab("Misc", "http://www.roblox.com/asset/?id=9405930424")
+tabMisc.newButton("Copy Discord Link", "Join Dc For Free Bobuc :0", function()
+setclipboard("discord.gg/vexonhub")
+end)
+tabMisc.newLabel("")
+tabMisc.newButton("Inf Yield", "Best Admin Panel Script", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+tabMisc.newButton("Dex Explorer", "Normal pc/mobile White Dex", function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Classic-Dex-Explorer-21009"))()
+end)
+tabMisc.newButton("Remote Spy", "Just a Remote Spy Script", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
+end)
+tabMisc.newButton("KeyBoard", "Mobile KeyBoard Gui", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
+end)
+tabMisc.newButton("Anim Logger","Animation ID Grabber",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvl9999/AnimationGrabber/main/Universal"))();
+end)
+tabMisc.newButton("f3x","inf yield f3x",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/refs/heads/main/f3x.lua"))()
+end)
+tabMisc.newLabel("Places")
+
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local teleportEnabled = false
+local originalPosition
+
+tabMisc.newToggle("Tp All Loop", "Teleports to Everyone in the Server Every 0.1 Seconds", false, function(toggleState)
+    teleportEnabled = toggleState
+
+    if toggleState then
+        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            originalPosition = player.Character.HumanoidRootPart.CFrame
+        end
+
+        startTeleporting()
+    else
+        if originalPosition and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            player.Character.HumanoidRootPart.CFrame = originalPosition
+        end
+    end
+end)
+
+function startTeleporting()
+    task.spawn(function()
+        while teleportEnabled do
+            for _, targetPlayer in ipairs(Players:GetPlayers()) do
+                if targetPlayer ~= player 
+                   and targetPlayer.Character 
+                   and targetPlayer.Character:FindFirstChild("HumanoidRootPart") 
+                   and player.Character 
+                   and player.Character:FindFirstChild("HumanoidRootPart") then
+                    player.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
+                    wait(0.1)
+                end
+            end
+            wait(0.1)
+        end
+    end)
+end
+
+player.CharacterAdded:Connect(function()
+    if teleportEnabled then
+        startTeleporting()
+    end
+end)
+
+tabMisc.newButton("Tp Frozen Lock", "Teleport To Frozen Lock", function()
+local player = game.Players.LocalPlayer 
+local frozenLock = game.Workspace.Thrown:WaitForChild("Frozen Lock")
+local rootPart = frozenLock:WaitForChild("Root")
+
+if rootPart then
+  
+    player.Character:SetPrimaryPartCFrame(rootPart.CFrame)
+else
+end
+end)
+
+
+tabMisc.newButton("TP Panel", "Mini Teleport Panel For Easy Teleport Places (Not Have Animation/Sound)", function()
+loadstring(game:HttpGet("https://pastefy.app/uiTL0dfO/raw"))()
+end)
+
+
+
+tabMisc.newLabel("Delete Laggy Parts")
+
+
+local map = workspace:FindFirstChild("Map")
+
+if map then
+    local original = {}
+
+    local function togglePart(name, state)
+        local obj = map:FindFirstChild(name)
+        if state then
+           
+            if not obj and original[name] then
+                original[name].Parent = map
+            end
+        else
+           
+            if obj then
+                original[name] = obj
+                obj.Parent = nil
+            end
+        end
+    end
+
+    tabMisc.newToggle("Trees", "Delete Trees For Less Lag", true, function(toggleState)
+        togglePart("Trees", toggleState)
+    end)
+
+    tabMisc.newToggle("Walls", "Delete Walls For Less Lag", true, function(toggleState)
+        togglePart("Walls", toggleState)
+    end)
+
+    tabMisc.newToggle("Grass", "Delete Grass For Less Lag", true, function(toggleState)
+        togglePart("Grass", toggleState)
+        togglePart("GrassBottom", toggleState)
+    end)
+
+    tabMisc.newToggle("Benches", "Delete Benches For Less Lag", true, function(toggleState)
+        togglePart("Benchs", toggleState)
+    end)
+end
+
+
+tabMisc.newLabel("Player")
+
+tabMisc.newButton("ServerHop", "Change Server", function()
+loadstring(game:HttpGet("https://pastefy.app/uTXUoORd/raw"))()
+end)
+tabMisc.newButton("Rejoin", "ReJoin Server", function()
+game:GetService("TeleportService"):Teleport(game.PlaceId)
+end)
+tabMisc.newButton("Reset", "Restart Your Characther", function()
+loadstring(game:HttpGet("https://pastefy.app/YPv8xrYN/raw"))()
+end)
+tabMisc.newButton("Fix Cam", "Sets Your Camera To Normal", function()
+loadstring(game:HttpGet("https://pastefy.app/IrvnCaF2/raw"))()
+end)
+
+
+tabMisc.newLabel("Random")
+
+tabMisc.newButton("Gui Transparent", "Makes All Gui 50% Transparent", function()
+local gui = game:GetService("CoreGui").DrRay
+
+gui.TopBar.BackgroundTransparency = 0.5
+gui.MainBar.BackgroundTransparency = 0.5
+gui.TopBar.TopBar.BackgroundTransparency = 0.5
+gui.TopBar.ProfileMenu.Clock.BackgroundTransparency = 0.5
+gui.TopBar.ProfileMenu.PlayerProfile.BackgroundTransparency = 0.5
+gui.TopBar.ProfileMenu.Title.BackgroundTransparency = 0.5
+gui.TopBar.TopBarClose.BackgroundTransparency = 0.55
+gui.TopBar.TopBarClose.idk.Visible = false
+end)
+tabMisc.newButton("Baldy Dummy", "Makes Dummy Bald lol", function()
+loadstring(game:HttpGet("https://pastefy.app/b1matovZ/raw"))()
+end)
+
+tabMisc.newButton("Crazy Nigger Spin", "Spin Nigger Spinn", function()
+local lp = game:GetService("Players").LocalPlayer
+local c = lp.Character
+local hrp = c:FindFirstChild("HumanoidRootPart")
+
+local h = game:GetService("RunService").Heartbeat
+
+while h:Wait() and c and c.Parent do
+    if workspace.Live[lp.Name]:FindFirstChild("M1ing") then
+        hrp.Orientation = Vector3.new(-10, 0, 0)
+    else
+        hrp.Orientation = Vector3.new(0, 0, 0)
+    end
+end
+end)
+
+tabMisc.newLabel("Tools")
+local function createTeleportTool(toolName, teleportPosition)
+    local player = game.Players.LocalPlayer
+    local backpack = player.Backpack
+    local originalPosition = nil
+    local tool = Instance.new("Tool")
+    tool.Name = toolName
+    tool.RequiresHandle = false
+    tool.Parent = backpack
+    tool.Equipped:Connect(function()
+        originalPosition = player.Character.HumanoidRootPart.Position
+        player.Character:SetPrimaryPartCFrame(CFrame.new(teleportPosition))
+    end)
+    tool.Unequipped:Connect(function()
+        if originalPosition then
+            player.Character:SetPrimaryPartCFrame(CFrame.new(originalPosition))
+        end
+    end)
+end
+tabMisc.newDropdown("PlaceTool DropDown", "What Place Tool Do You Want?", {
+    "Map", "SafeZone1", "SafeZone2", "Pixel", "Void", "DarkNess", "Montain", "Counter", "Counter Up", "Atomic Base", "Atomic Base Up", "Atomic Slash", "Prison"
+}, function(selectedText)
+    local locations = {
+        Map = {name = "Map Tool", position = Vector3.new(150, 440, 30)},
+        SafeZone1 = {name = "SafeZone1 Tool", position = Vector3.new(150, 505, 30)},
+        SafeZone2 = {name = "SafeZone2 Tool", position = Vector3.new(150, 705, 30)},
+        Pixel = {name = "Pixel Tool", position = Vector3.new(30000000, 30000000, 30000000)},
+        Void = {name = "Void Tool", position = Vector3.new(150, -495, 30)},
+        DarkNess = {name = "DarkNess Tool", position = Vector3.new(0 ,900000000002 ,0)},
+        Montain = {name = "Mountain Tool", position = Vector3.new(155.577, 628.742, -447.938)},
+        Counter = {name = "Counter Tool", position = Vector3.new(-68, 29, 20346)},
+        ["Counter Up"] = {name = "CounterUp Tool", position = Vector3.new(-68, 84, 20354)},
+        ["Atomic Base"] = {name = "AtomicBase Tool", position = Vector3.new(1063, 30, 23006)},
+        ["Atomic Base Up"] = {name = "AtomicBaseUp Tool", position = Vector3.new(1063, 405, 23006)},
+        ["Atomic Slash"] = {name = "AtomicSlash Tool", position = Vector3.new(1063, 131, 23006)},
+        Prison = {name = "Prison Tool", position = Vector3.new(438, 439, -376)},
+    }
+    local location = locations[selectedText]
+    if location then
+        createTeleportTool(location.name, location.position)
+    end
+end)
+
+tabMisc.newButton("TrashCan Tool", "Rly Rly OP and Little Bit Buggy But Works good", function()
+loadstring(game:HttpGet("https://pastefy.app/48QRy5tx/raw"))()
+end)
+tabMisc.newButton("TP Tool (Anim)", "Click Tp + Anim", function()
+loadstring(game:HttpGet("https://pastefy.app/yEwya3MR/raw"))()
+end)
+tabMisc.newButton("TP Tool (Normal)", "Click Tp", function()
+loadstring(game:HttpGet("https://pastefy.app/ZLpXLAeF/raw"))()
+end)
+tabMisc.newButton("Punch Tool", "Flings The Person You Hit", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/punch",true))()
+end)
+tabMisc.newButton("Run Tool", "Forward Running Tool", function()
+loadstring(game:HttpGet("https://pastefy.app/6DahLoA3/raw"))()
+end)
+tabMisc.newButton("Super Run Tool", "Forward Running Tool", function()
+loadstring(game:HttpGet("https://pastefy.app/uN8jb9GF/raw"))()
+end)
+tabMisc.newButton("Jerk Off Tool", "Susy Baka (Not By Me)", function()
+loadstring(game:HttpGet("https://pastefy.app/LcC6ZrhN/raw"))()
+end)
+
+
+
+local tabAnim = DrRayLibrary.newTab("Animations","http://www.roblox.com/asset/?id=9405930424");
+tabAnim.newButton("Copy Discord Link", "Join Dc For Free Bobuc :0", function()
+setclipboard("discord.gg/vexonhub")
+end)
+tabAnim.newLabel("")
+
+tabAnim.newInput("Play Animation To Dummy (Not Fe)", "Write the Animation ID you want to play at dummy", function(DummyAnim)
+    local player = game.Workspace.Live["Weakest Dummy"]
+    repeat wait() until player.Humanoid
+    local dummyhumanoid = player.Humanoid
+
+    local anim2 = Instance.new("Animation")
+    anim2.AnimationId = "rbxassetid://" .. DummyAnim
+
+    local playAnim2 = dummyhumanoid:LoadAnimation(anim2)
+    playAnim2:Play()
+end)
+tabAnim.newInput("Play Animation", "Write the Animation ID you want to play", function(Animid)
+    local function playAnimation(character, animationId)
+        local animation = Instance.new("Animation")
+        animation.AnimationId = "rbxassetid://" .. animationId
+        local humanoid = character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
+            animator:LoadAnimation(animation):Play()
+        end
+    end
+
+    local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    if tonumber(Animid) then
+        playAnimation(character, Animid)
+    end
+end)
+
+--// No Anim \\--
+local animationConnection
+local deathConnection
+
+local function setupAnimationControl()
+    local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    local ignoreAnimationId = "136370737633649" 
+
+    local function onAnimationPlayed(animationTrack)
+        local animationId = animationTrack.Animation.AnimationId:match("%d+")
+        if animationId ~= ignoreAnimationId then
+            animationTrack:Stop()
+        end
+    end
+
+    if animationConnection then
+        animationConnection:Disconnect()
+    end
+
+    animationConnection = humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+    if deathConnection then
+        deathConnection:Disconnect()
+    end
+
+    deathConnection = humanoid.Died:Connect(function()
+        setupAnimationControl()
+    end)
+end
+
+tabAnim.newToggle("NoAnim", "Stops All Animations", false, function(toggleState)
+    if toggleState then
+        setupAnimationControl()
+    else
+        if animationConnection then
+            animationConnection:Disconnect()
+        end
+        if deathConnection then
+            deathConnection:Disconnect()
+        end
+    end
+end)
+
+tabAnim.newLabel("Character Animations")
+local animations = {
+    { "KJ/Gojo/Dummy", "Special Animations", "https://pastefy.app/qfu9PA3v/raw" },
+    { "Saitama", "Saitama Animations", "https://pastefy.app/77H3wRXO/raw" },
+    { "Garou", "Garou Animations", "https://pastefy.app/VY6onISD/raw" },
+    { "Genos", "Genos Animations", "https://pastefy.app/0EPn6woL/raw" },
+    { "Sonic", "Sonic Animations", "https://pastefy.app/KaiJDJHg/raw" },
+    { "MetalBat", "MetalBat Animations", "https://pastefy.app/mObEgCqc/raw" },
+    { "Atomic Samurai", "Atomic Samurai Animations", "https://pastefy.app/9bllab1z/raw" },
+    { "Tatsumaki", "Tatsumaki Animations", "https://pastefy.app/qhJrd1zw/raw" },
+    { "Suiryu", "Suiryu Animations", "https://pastefy.app/AKyKbIt0/raw" }
+}
+for _, anim in ipairs(animations) do
+    tabAnim.newButton(anim[1], anim[2], function()
+        loadstring(game:HttpGet(anim[3]))()
+    end)
+end
+
+
+local tabFight = DrRayLibrary.newTab("Fighting","http://www.roblox.com/asset/?id=7461510428");
+tabFight.newButton("Copy Discord Link", "Join Dc For Free Bobuc :0", function()
+setclipboard("discord.gg/vexonhub")
+end)
+tabFight.newLabel("Farm")
+
+
+
+local lp = game:GetService("Players").LocalPlayer
+local rs = game:GetService("RunService")
+
+local streakCheckEnabled = false -- Toggle için değişken
+local streakConnection -- Bağlantıyı saklamak için
+
+local function checkStreak()
+    local liveFolder = game.Workspace:FindFirstChild("Live")
+    if not liveFolder then return end
+    
+    local playerModel = liveFolder:FindFirstChild(lp.Name)
+    if not playerModel then return end
+    
+    local currentStreak = playerModel:GetAttribute("CurrentStreak") or 0
+
+    if currentStreak >= 9 then
+        lp.Character:FindFirstChild("Humanoid").Health = 0 -- Karakteri öldür
+    end
+end
+
+local function toggleStreakCheck(state)
+    streakCheckEnabled = state
+    
+    if streakCheckEnabled then
+        streakConnection = rs.RenderStepped:Connect(checkStreak)
+    else
+        if streakConnection then
+            streakConnection:Disconnect()
+            streakConnection = nil
+        end
+    end
+end
+
+tabFight.newToggle("Auto Reset Streak", "Resets when You Have 9 Streak (good for auto farm)", false, function(toggleState)
+    toggleStreakCheck(toggleState)
+end)
+
+
+
+
+local player = game.Players.LocalPlayer
+local isEnabled = false
+
+local function checkUltimate()
+    if isEnabled and player:GetAttribute("Ultimate") == 100 then
+        wait(1)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.G, false, nil)
+        task.wait()
+        game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.G, false, nil)
+    end
+end
+
+local connection
+
+tabFight.newToggle("Auto Use Ult", "Uses Ult When Ultimate Bar is 100%", false, function(toggleState)
+    isEnabled = toggleState
+
+    if isEnabled then
+        connection = player.AttributeChanged:Connect(function(attribute)
+            if attribute == "Ultimate" then
+                checkUltimate()
+            end
+        end)
+    else
+        if connection then
+            connection:Disconnect()
+            connection = nil
+        end
+    end
+end)
+
+checkUltimate()
+
+
+tabFight.newToggle("Auto Farm Lowest Health","Chooses Person with Less Than 35% Health And Kill" ,false,function(Value)
+    getgenv().AutoKillLowestHealthPlr = Value
+    getgenv().TeleportDistance = 5
+    local LPlayer = game.Players.LocalPlayer
+    local CRoot
+    local function UpdateCRoot()
+        local LChar = LPlayer.Character
+        if LChar then
+            CRoot = LChar:FindFirstChild("HumanoidRootPart");
+            if not CRoot then
+                LChar.ChildAdded:Wait();
+                CRoot = LChar:WaitForChild("HumanoidRootPart");
+            end
+        end
+    end
+    local function isPlayer(X)
+        return game.Players:GetPlayerFromCharacter(X) ~= nil
+    end
+    local function FindLowestHealth()
+        local LowestHealth = math.huge
+        local NearestPlr = nil
+        for _,v in pairs(game.Workspace.Live:GetChildren()) do
+            if isPlayer(v) then
+                local Humanoid = v:FindFirstChildOfClass("Humanoid");
+                local HumanoidRoot = v:FindFirstChild("HumanoidRootPart");
+                if Humanoid and HumanoidRoot and v ~= LPlayer.Character then
+                    if Humanoid.Health > 0 and Humanoid.Health <= 35  then
+                        LowestHealth = Humanoid.Health;NearestPlr = HumanoidRoot;
+                    end
+                end
+            end
+        end
+        return NearestPlr
+    end
+    task.spawn(function()
+        while getgenv().AutoKillLowestHealthPlr == true  do
+            pcall(function()UpdateCRoot();
+                if CRoot then
+                    local Found = FindLowestHealth();
+                    if Found then
+                        LPlayer.Character:SetPrimaryPartCFrame(CFrame.new(Found.Position - Vector3.new(0,Found.Size.Y/2,0) - Found.CFrame.LookVector * getgenv().TeleportDistance + Vector3.new(0,-6,0),Found.Position - Vector3.new(0,Found.Size.Y/2,0)));
+                        if not workspace.Live:FindFirstChild(Found.Parent.Name):FindFirstChild("RagdollSim") and not workspace.Live:FindFirstChild(Found.Parent.Name):FindFirstChild("AbsoluteImmortal") then
+                            task.spawn(function()
+                                local args = {[1] = {["Goal"] = "LeftClick",["Mobile"] = true}};
+                                game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args));
+                                local args = {[1] = {["Goal"] = "LeftClickRelease",["Mobile"] = true}};
+                                game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args));
+                            end)
+    
+                            for _,x in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                                if x:IsA("Tool") and x.Name ~= "Prey's Peril" and x.Name ~= "Split Second Counter" then
+                                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(x);x:Activate();
+                                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):UnequipTools();
+                                end
+                            end
+                        end
+                    else
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150, 705, 30);
+                    end
+                end
+            end)
+            task.wait(0.015);
+        end
+    end)
+    LPlayer.CharacterAdded:Connect(function()
+        task.wait(1.5);UpdateCRoot();
+    end)
+end)
+
+tabFight.newToggle("Auto Farm Nearest","Auto Kill Nearest Player In Server",false,function(Value)
+    getgenv().AutoKillNearestPlr = Value
+    getgenv().TeleportDistance = 5
+    task.spawn(function()
+        if getgenv().AutoKillNearestPlr == false then
+            game.Players.LocalPlayer.Character.Humanoid.RootPart.CFrame = game.Players.LocalPlayer.Character.Humanoid.RootPart.CFrame * CFrame.new(0,20,-20);
+        end
+    end)
+    local LPlayer = game.Players.LocalPlayer
+    local CRoot
+    local function UpdateCRoot()
+        local LChar = LPlayer.Character
+        if LChar then
+            CRoot = LChar:FindFirstChild("HumanoidRootPart");
+            if not CRoot then
+                LChar.ChildAdded:Wait();
+                CRoot = LChar:WaitForChild("HumanoidRootPart");
+            end
+        end
+    end
+    local function isPlayer(X)
+        return game.Players:GetPlayerFromCharacter(X) ~= nil
+    end
+    local function FindNearest()
+        local Dist = math.huge
+        local NearestPlr = nil
+        for _,v in pairs(game.Workspace.Live:GetChildren()) do
+            if isPlayer(v) then
+                local Humanoid = v:FindFirstChildOfClass("Humanoid");
+                local HumanoidRoot = v:FindFirstChild("HumanoidRootPart");
+        
+                if Humanoid and HumanoidRoot and v ~= LPlayer.Character then
+                    if Humanoid.Health > 0 then
+                        local Mag = (CRoot.Position - HumanoidRoot.Position).magnitude
+                        if Mag < Dist then
+                            Dist = Mag;NearestPlr = HumanoidRoot;
+                        end
+                    end
+                end
+            end
+        end
+        return NearestPlr
+    end
+    task.spawn(function()
+        while getgenv().AutoKillNearestPlr == true  do
+            pcall(function()UpdateCRoot();
+                if CRoot then
+                    local Found = FindNearest();
+                    if Found then
+                        LPlayer.Character:SetPrimaryPartCFrame(CFrame.new(Found.Position - Vector3.new(0,Found.Size.Y/2,0) - Found.CFrame.LookVector * getgenv().TeleportDistance + Vector3.new(0,-6,0),Found.Position - Vector3.new(0,Found.Size.Y/2,0)));
+                        if not workspace.Live:FindFirstChild(Found.Parent.Name):FindFirstChild("RagdollSim") and not workspace.Live:FindFirstChild(Found.Parent.Name):FindFirstChild("AbsoluteImmortal") then
+                            task.spawn(function()
+                                local args = {[1] = {["Goal"] = "LeftClick",["Mobile"] = true}};
+                                game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args));
+                                local args = {[1] = {["Goal"] = "LeftClickRelease",["Mobile"] = true}};
+                                game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args));
+                            end)
+
+                            for _,x in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                                if x:IsA("Tool") and x.Name ~= "Prey's Peril" and x.Name ~= "Split Second Counter" then
+                                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(x);x:Activate();
+                                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):UnequipTools();
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
+            task.wait(0.015);
+        end
+    end)
+    
+    LPlayer.CharacterAdded:Connect(function()
+        task.wait(1.5);UpdateCRoot();
+    end)
+end)
+tabFight.newToggle("Auto Give Kills","Help Players Works Buggy",false,function(Value)
+    getgenv().AutoGiveKills = Value
+    task.spawn(function()
+        while getgenv().AutoGiveKills == true do
+            pcall(function()
+                if workspace.Live[game.Players.LocalPlayer.Name]:FindFirstChild("Humanoid").MaxHealth ~= workspace.Live[game.Players.LocalPlayer.Name]:FindFirstChild("Humanoid").Health then
+                    game.Players.LocalPlayer.Character.Humanoid.Health = 0;
+                end
+            end)
+            task.wait(0.35);
+        end
+    end)
+end)
+
+
+tabFight.newLabel("Fighting")
+
+
+tabFight.newToggle("M1 Click Reach","Teleport M1 To Nearest Player",false,function(Value)
+    getgenv().AutoTeleportPunching = Value
+    getgenv().DetectionDistance = 999999
+    getgenv().TeleportDistance = 3
+    local LPlayer = game.Players.LocalPlayer
+    local CRoot
+    local function UpdateCRoot()
+        local LChar = LPlayer.Character
+        if LChar then
+            CRoot = LChar:FindFirstChild("HumanoidRootPart");
+            if not CRoot then
+                LChar.ChildAdded:Wait();
+                CRoot = LChar:WaitForChild("HumanoidRootPart");
+            end
+        end
+    end
+    local function FindNearest()
+        local Dist = getgenv().DetectionDistance
+        local NearestPlr = nil
+        for _,v in pairs(game.Workspace.Live:GetChildren()) do
+            local Humanoid = v:FindFirstChildOfClass("Humanoid");
+            local HumanoidRoot = v:FindFirstChild("HumanoidRootPart");
+            if Humanoid and HumanoidRoot and v ~= LPlayer.Character then
+                if Humanoid.Health > 0 then
+                    local Mag = (CRoot.Position - HumanoidRoot.Position).magnitude
+                    if Mag < Dist then
+                        Dist = Mag
+                        NearestPlr = HumanoidRoot
+                    end
+                end
+            end
+        end
+        return NearestPlr
+    end
+    task.spawn(function()
+        while getgenv().AutoTeleportPunching == true do
+            pcall(function()UpdateCRoot();
+                if workspace.Live[game.Players.LocalPlayer.Name]:FindFirstChild("M1ing") then
+                    if CRoot then
+                        local Found = FindNearest();
+                        if Found then
+                            local Target = Found.Position + -Found.CFrame.LookVector * getgenv().TeleportDistance
+                            LPlayer.Character:SetPrimaryPartCFrame(CFrame.new(Target,Target + (Found.Position - Target).unit));
+                        end
+                    end
+                end
+            end)
+            task.wait(0.015);
+        end
+    end)
+    LPlayer.CharacterAdded:Connect(function()
+        task.wait(3);UpdateCRoot();
+    end)
+end)
+
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local UserInputService = game:GetService("UserInputService")
+
+local CamlockState = false
+local Prediction = 0.16
+local enemy = nil
+
+getgenv().CamKey = "Z"  -- Cam için Z tuşu
+getgenv().CharacterKey = "X"  -- Character için X tuşu
+
+function FindNearestEnemy()
+    local ClosestDistance, ClosestPlayer = math.huge, nil
+    local CenterPosition = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2)
+
+    for _, Player in ipairs(Players:GetPlayers()) do
+        if Player ~= LocalPlayer then
+            local Character = Player.Character
+            if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Humanoid") and Character.Humanoid.Health > 0 then
+                local Position, IsVisibleOnViewport = workspace.CurrentCamera:WorldToViewportPoint(Character.HumanoidRootPart.Position)
+                if IsVisibleOnViewport then
+                    local Distance = (CenterPosition - Vector2.new(Position.X, Position.Y)).Magnitude
+                    if Distance < ClosestDistance then
+                        ClosestPlayer = Character.HumanoidRootPart
+                        ClosestDistance = Distance
+                    end
+                end
+            end
+        end
+    end
+    return ClosestPlayer
+end
+
+RunService.Heartbeat:Connect(function()
+    if CamlockState and enemy then
+        local character = LocalPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            local hrp = character.HumanoidRootPart
+            local targetPos = enemy.Position + (enemy.Velocity * Prediction)
+            hrp.CFrame = CFrame.new(hrp.Position, Vector3.new(targetPos.X, hrp.Position.Y, targetPos.Z))
+        end
+    end
+end)
+
+UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+    if gameProcessedEvent then return end
+
+    if input.UserInputType == Enum.UserInputType.Keyboard then
+        if input.KeyCode == Enum.KeyCode[getgenv().CamKey] then
+            CamlockState = not CamlockState
+            if CamlockState then
+                enemy = FindNearestEnemy()
+            else
+                enemy = nil
+            end
+        elseif input.KeyCode == Enum.KeyCode[getgenv().CharacterKey] then
+            CamlockState = not CamlockState
+            if CamlockState then
+                enemy = FindNearestEnemy()
+            else
+                enemy = nil
+            end
+        end
+    end
+end)
+
+tabFight.newToggle("AimLock Cam", "You Can Off/On With Z Key (Turn On Shift Lock)", false, function(toggleState)
+    if toggleState then
+        CamlockState = true
+        enemy = FindNearestEnemy()
+    else
+        CamlockState = false
+        enemy = nil
+    end
+end)
+
+tabFight.newToggle("AimLock Character", "You Can Off/On With X Key (Turn Off Shift Lock)", false, function(toggleState)
+    if toggleState then
+        CamlockState = true
+        enemy = FindNearestEnemy()
+    else
+        CamlockState = false
+        enemy = nil
+    end
+end)
+
+
+local player = game:GetService("Players").LocalPlayer
+local running = false -- Toggle durumu
+
+-- Fonksiyon: Yakınındaki oyuncuları kontrol edip sol tıklama simülasyonu yapar
+local function startClickLoop()
+    task.spawn(function()
+        while running do
+            local character = player.Character
+            if character then
+                local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+                if humanoidRootPart then
+                    for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+                        if v ~= player and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+                            local distance = (humanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude
+                            if distance < 10 then -- 10 stud mesafede bir oyuncu varsa
+                                -- Sol tıklama simülasyonu
+                                local args1 = {[1] = {["Goal"] = "LeftClick", ["Mobile"] = true}}
+                                player.Character.Communicate:FireServer(unpack(args1))
+
+                                -- Sol tıklamayı bırakma simülasyonu
+                                task.wait(0.1)
+                                local args2 = {[1] = {["Goal"] = "LeftClickRelease", ["Mobile"] = true}}
+                                player.Character.Communicate:FireServer(unpack(args2))
+                            end
+                        end
+                    end
+                end
+            end
+            task.wait(0.1) -- Döngüyü çok sık çalıştırmamak için
+        end
+    end)
+end
+
+-- Toggle'a bağlama
+tabFight.newToggle("Auto Hit", "If there is someone near 10 Studs, Left Clicks", false, function(toggleState)
+    running = toggleState -- Toggle açıldığında veya kapandığında değişkeni güncelle
+
+    if toggleState then
+        startClickLoop()
+    else
+    end
+end)
+
+-- Karakter yeniden doğduğunda tekrar çalıştır
+player.CharacterAdded:Connect(function()
+    if running then
+        task.wait(1) -- Karakterin tam yüklenmesini bekleyelim
+        startClickLoop()
+    end
+end)
+
+
+tabFight.newToggle("Auto Dodge Players","Dodge Attacks (Now Work For New Characthes)",false,function(Value)
+    getgenv().AutoDodging = Value
+    local DashAnims = {NormalDash = {10479335397},WeaponDash = {13380255751}};
+    local SaitamaAnims = {
+        NormalPunch = {10468665991};
+        ConsecutivePunches = {10466974800};
+        Shove = {10471336737};
+        Uppercut = {12510170988};
+    }
+    local GarouAnims = {
+        FlowingWater = {12272894215};
+        LethalWhirlwindStream = {12296882427};
+        HunterGrasp = {12307656616};
+    }
+    local GenosAnims = {
+        MachineGunBlows = {12534735382};
+        IgnitionBurst = {12502664044};
+        BlitzShot = {12618271998};
+        JetDive = {12684390285};
+    }
+    local SonicAnims = {
+        FlashStrike = {13376869471};
+        WhirlwindKick = {13294790250};
+        Scatter = {13376962659,13365849295};
+        ExplosiveShuriken = {13501296372};
+    }
+    local MetalBatAnims = {
+        Homerun = {14004235777,14003607057};
+        Beatdown = {14046756619,14048349132};
+        GrandSlam = {14299135500,14967219354};
+        FoulBall = {14351441234};
+    }
+    local SamuraiAnims = {
+        QuickSlice = {15290930205};
+        AtomsCleave = {15145462680};
+        PinPointCut = {15295895753};
+    }
+    local EsperAnims = {
+        CrushingPull = {16139108718,16139402582};
+        WindstormFury = {16515850153};
+        StoneCoffin = {16431491215};
+        ExplosivePush = {16597322398,16597912086};
+    }
+    local Animations = {}
+    for _,x in pairs({DashAnims,SaitamaAnims,GarouAnims,GenosAnims,SonicAnims,MetalBatAnims,SamuraiAnims,EsperAnims}) do
+        for _,k in pairs(x) do
+            for _,v in pairs(k) do
+                table.insert(Animations,v);
+            end
+        end
+    end
+    task.spawn(function()
+        local connection
+        connection = game:GetService("RunService").RenderStepped:Connect(function()
+            if getgenv().AutoDodging == true then
+                pcall(function()
+                    for _,k in ipairs(workspace.Live:GetChildren()) do
+                        if k:IsA("Model") and k:FindFirstChild("Head") and k.Head:IsA("Part") and k.Head.Name == "Head" and k.Head ~= game.Players.LocalPlayer.Character.Head then
+                            if (k.Head.Position - game.Players.LocalPlayer.Character.Head.Position).magnitude <= 25 then
+                                if k:FindFirstChildOfClass("Humanoid") and k:FindFirstChildOfClass("Humanoid").Health > 0 then local IsUsingAttacks = false;
+                                    for _,x in pairs(k:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks()) do
+                                        if table.find(Animations,tonumber(x.Animation.AnimationId:match("%d+"))) then
+                                            IsUsingAttacks = true;
+                                            break
+                                        end
+                                    end
+    
+                                    if k:FindFirstChild("M1ing") or IsUsingAttacks then    
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(k.Head.Position + k.Head.CFrame.lookVector * -5 + Vector3.new(0,0,0),k.Head.Position);
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end)
+            else
+                connection:Disconnect();
+            end
+        end)
+    end)
+end)
+
+
+tabFight.newToggle("Auto Block Players","Block Attacks",false,function(Value)
+    getgenv().AutoBlocking = Value
+    task.spawn(function()
+        local connection
+        connection = game:GetService("RunService").RenderStepped:Connect(function()
+            if getgenv().AutoBlocking == true then
+                pcall(function()
+                    for _,k in ipairs(workspace.Live:GetChildren()) do
+                        if k:IsA("Model") and k:FindFirstChild("Head") and k.Head:IsA("Part") and k.Head.Name == "Head" and k.Head ~= game.Players.LocalPlayer.Character.Head then
+                            if (k.Head.Position - game.Players.LocalPlayer.Character.Head.Position).magnitude <= 19.5 then
+                                if k:FindFirstChildOfClass("Humanoid") and k:FindFirstChildOfClass("Humanoid").Health > 0 then
+                                    if k:FindFirstChild("M1ing") then
+                                        local args = {[1] = {["Goal"] = "KeyPress",["Key"] = Enum.KeyCode.F}};
+                                        game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args));
+                                    else
+                                        local args = {[1] = {["Goal"] = "KeyRelease",["Key"] = Enum.KeyCode.F}};
+                                        game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(args));     
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end)
+            else
+                connection:Disconnect();
+            end
+        end)
+    end)
+end)
+
+
+
+
+tabFight.newToggle("Auto Counter Players","Counter Attacks (Only Works On Characters Hes Counter Move)",false,function(Value)
+    getgenv().AutoBlocking = Value
+    task.spawn(function()
+        local connection
+        connection = game:GetService("RunService").RenderStepped:Connect(function()
+            if getgenv().AutoBlocking then
+                pcall(function()
+                    for _, k in ipairs(workspace.Live:GetChildren()) do
+                        if k:IsA("Model") and k:FindFirstChild("Head") and k.Head:IsA("Part") and k.Head ~= game.Players.LocalPlayer.Character.Head then
+                            if (k.Head.Position - game.Players.LocalPlayer.Character.Head.Position).magnitude <= 19.5 then
+                                if k:FindFirstChildOfClass("Humanoid") and k:FindFirstChildOfClass("Humanoid").Health > 0 and k:FindFirstChild("M1ing") then
+                                    local inventory = game.Players.LocalPlayer.Backpack
+                                    local items = {"Death Blow", "Spiraling Storm", "Split Second Counter", "Prey's Peril"}
+                                    
+                                    for _, itemName in ipairs(items) do
+                                        local item = inventory:FindFirstChild(itemName)
+                                        if item then
+                                            item.Parent = game.Players.LocalPlayer.Character
+                                            break
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end)
+            else
+                connection:Disconnect()
+            end
+        end)
+    end)
+end)
+
+
+tabFight.newButton("Easy Kill Player", "(By totallynotaexploiter.)", function()
+loadstring(game:HttpGet("https://pastefy.app/7qmTI84P/raw"))()
+end)
+
+
+
+
+
+
+
+
+local tabFling = DrRayLibrary.newTab("Fling","http://www.roblox.com/asset/?id=6723742952");
+tabFling.newButton("Copy Discord Link", "Join Dc For Free Bobuc :0", function()
+setclipboard("discord.gg/vexonhub")
+end)
+tabFling.newLabel("Players")
+
+
+
+
+
+
+
+local players = game:GetService("Players")
+local CoreGui = game:GetService("StarterGui")
+local localPlayer = players.LocalPlayer
+local camera = game.Workspace.CurrentCamera
+
+_G.SelectedPlayer = ""
+local tpLoopEnabled = false
+local flingLoopEnabled = false
+local viewingLoop = false
+local originalSubject = camera.CameraSubject -- Başlangıçtaki kamera hedefini kaydet
+
+-- Oyuncu seçme inputu
+tabFling.newInput("Select Player", "Enter Player Name To Select", function(text)
+    _G.SelectedPlayer = text
+
+    if not text or text == "" then
+        CoreGui:SetCore("SendNotification", {
+            Title = "VexonHub",
+            Text = "No One Selected",
+            Icon = "http://www.roblox.com/asset/?id=84519376661277",
+            Duration = 5
+        })
+        return
+    end
+
+    for _, player in ipairs(players:GetPlayers()) do
+        if string.find(string.lower(player.Name), string.lower(text), 1, true) or 
+           string.find(string.lower(player.DisplayName), string.lower(text), 1, true) then
+            CoreGui:SetCore("SendNotification", {
+                Title = "VexonHub",
+                Text = "Selected: " .. player.DisplayName,
+                Icon = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. player.UserId .. "&width=420&height=420&format=png",
+                Duration = 10
+            })
+            return
+        end
+    end
+
+    CoreGui:SetCore("SendNotification", {
+        Title = "VexonHub",
+        Text = "Player Not Found",
+        Icon = "http://www.roblox.com/asset/?id=84519376661277",
+        Duration = 5
+    })
+end)
+
+-- Seçili oyuncuya ışınlanma fonksiyonu
+local function teleportToSelectedPlayer()
+    local character = localPlayer.Character
+    if not _G.SelectedPlayer or _G.SelectedPlayer == "" then return end
+    if not character or not character:FindFirstChild("HumanoidRootPart") then return end
+
+    for _, player in ipairs(players:GetPlayers()) do
+        if string.find(string.lower(player.Name), string.lower(_G.SelectedPlayer), 1, true) or 
+           string.find(string.lower(player.DisplayName), string.lower(_G.SelectedPlayer), 1, true) then
+            
+            local targetCharacter = player.Character
+            if targetCharacter and targetCharacter:FindFirstChild("HumanoidRootPart") then
+                character:FindFirstChild("HumanoidRootPart").CFrame = targetCharacter:FindFirstChild("HumanoidRootPart").CFrame
+                return
+            end
+        end
+    end
+end
+
+-- Seçili oyuncuya teleport butonu
+tabFling.newButton("Teleport", "Teleport to Selected Player One Time", function()
+    teleportToSelectedPlayer()
+end)
+
+-- Sürekli seçilen oyuncuya teleport toggle
+tabFling.newToggle("Loop Teleport", "Loop Teleport To The Selected Person", false, function(toggleState)
+    tpLoopEnabled = toggleState
+    if toggleState then
+        task.spawn(function()
+            while tpLoopEnabled do
+                teleportToSelectedPlayer()
+                task.wait(0.1)
+            end
+        end)
+    else
+    end
+end)
+
+-- Seçili oyuncuyu fling yapan buton
+tabFling.newButton("Fling", "Fling The Selected Player One Time", function()
+    if not _G.SelectedPlayer or _G.SelectedPlayer == "" then
+        CoreGui:SetCore("SendNotification", {
+            Title = "VexonHub",
+            Text = "No One Selected",
+            Icon = "http://www.roblox.com/asset/?id=84519376661277",
+            Duration = 5
+        })
+        return
+    end
+
+    for _, player in ipairs(players:GetPlayers()) do
+        if string.find(string.lower(player.Name), string.lower(_G.SelectedPlayer), 1, true) or 
+           string.find(string.lower(player.DisplayName), string.lower(_G.SelectedPlayer), 1, true) then
+            
+            miniFling(player) -- Fling fonksiyonunu sen ekleyeceksin
+            return
+        end
+    end
+
+    CoreGui:SetCore("SendNotification", {
+        Title = "VexonHub",
+        Text = "Player Not Found",
+        Icon = "http://www.roblox.com/asset/?id=84519376661277",
+        Duration = 5
+    })
+end)
+
+-- Sürekli seçili oyuncuyu fling yapan toggle
+tabFling.newToggle("Loop Fling", "Loop Fling Selected Player", false, function(toggleState)
+    flingLoopEnabled = toggleState
+    if toggleState then
+        task.spawn(function()
+            while flingLoopEnabled do
+                for _, player in ipairs(players:GetPlayers()) do
+                    if string.find(string.lower(player.Name), string.lower(_G.SelectedPlayer or ""), 1, true) or 
+                       string.find(string.lower(player.DisplayName), string.lower(_G.SelectedPlayer or ""), 1, true) then
+                        miniFling(player) -- Fling fonksiyonunu sen ekleyeceksin
+                    end
+                end
+                task.wait(0.1)
+            end
+        end)
+    else
+    end
+end)
+
+-- Seçili kişiyi 3 saniye boyunca izleme butonu
+tabFling.newButton("View Player", "View Selected Player For 3 Seconds", function()
+    if not _G.SelectedPlayer or _G.SelectedPlayer == "" then return end
+
+    for _, player in ipairs(players:GetPlayers()) do
+        if string.find(string.lower(player.Name), string.lower(_G.SelectedPlayer), 1, true) or 
+           string.find(string.lower(player.DisplayName), string.lower(_G.SelectedPlayer), 1, true) then
+            
+            local character = player.Character
+            if character and character:FindFirstChildOfClass("Humanoid") then
+                camera.CameraSubject = character:FindFirstChildOfClass("Humanoid")
+                task.delay(3, function()
+                    camera.CameraSubject = originalSubject
+                end)
+                return
+            end
+        end
+    end
+end)
+
+-- Sürekli izleme toggle
+tabFling.newToggle("Loop View", "Keep Viewing Selected Player", false, function(toggleState)
+    viewingLoop = toggleState
+    if viewingLoop then
+        task.spawn(function()
+            while viewingLoop do
+                for _, player in ipairs(players:GetPlayers()) do
+                    if string.find(string.lower(player.Name), string.lower(_G.SelectedPlayer or ""), 1, true) or 
+                       string.find(string.lower(player.DisplayName), string.lower(_G.SelectedPlayer or ""), 1, true) then
+                        local character = player.Character
+                        if character and character:FindFirstChildOfClass("Humanoid") then
+                            camera.CameraSubject = character:FindFirstChildOfClass("Humanoid")
+                        end
+                    end
+                end
+                task.wait(0.1)
+            end
+            camera.CameraSubject = originalSubject
+        end)
+    else
+        camera.CameraSubject = originalSubject
+    end
+end)
+
+
+
+
+
+tabFling.newToggle("Rape Player :3", "Mastered Ultra Susy Baka Player", false, function(Value)
+    getgenv().AutoFuckingPlayer = Value
+
+    if not _G.SelectedPlayer or _G.SelectedPlayer == "" then
+        CoreGui:SetCore("SendNotification", {
+            Title = "VexonHub",
+            Text = "No One Selected",
+            Icon = "http://www.roblox.com/asset/?id=84519376661277",
+            Duration = 5
+        })
+        getgenv().AutoFuckingPlayer = false
+        return
+    end
+
+    task.spawn(function()
+        if getgenv().AutoFuckingPlayer then
+            local FuckAnimation = Instance.new("Animation")
+            FuckAnimation.AnimationId = "rbxassetid://148840371"
+            local k = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(FuckAnimation)
+            k:Play()
+            k:AdjustSpeed(6)
+        else
+            for i, v in ipairs((game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid") or game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("AnimationController")):GetPlayingAnimationTracks()) do
+                v:Stop()
+            end
+        end
+    end)
+
+    task.spawn(function()
+        if getgenv().AutoFuckingPlayer then
+            local GahDamn = "http://www.roblox.com/asset/?id=8448213216"
+            local Sound = Instance.new("Sound")
+            Sound.Name = "Sound"
+            Sound.SoundId = GahDamn
+            Sound.Volume = 10
+            Sound.Looped = false
+            Sound.Archivable = false
+            Sound.Parent = game.Workspace
+            Sound:Play()
+
+            local Claps = "http://www.roblox.com/asset/?id=9114758204"
+            local ClapSound = Instance.new("Sound")
+            ClapSound.Name = "Sound"
+            ClapSound.SoundId = Claps
+            ClapSound.Volume = 10
+            ClapSound.Looped = true
+            ClapSound.Archivable = false
+            ClapSound.Parent = game.Workspace
+            ClapSound:Play()
+        else
+            for _, v in ipairs(workspace:GetChildren()) do
+                if v:IsA("Sound") then
+                    v:Destroy()
+                end
+            end
+        end
+    end)
+
+    task.spawn(function()
+        while getgenv().AutoFuckingPlayer do
+            pcall(function()
+                for _, player in ipairs(players:GetPlayers()) do
+                    if string.find(string.lower(player.Name), string.lower(_G.SelectedPlayer or ""), 1, true) or 
+                       string.find(string.lower(player.DisplayName), string.lower(_G.SelectedPlayer or ""), 1, true) then
+                        
+                        local targetCharacter = player.Character
+                        if targetCharacter and targetCharacter:FindFirstChild("HumanoidRootPart") then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                CFrame.new(targetCharacter.HumanoidRootPart.Position - targetCharacter.HumanoidRootPart.CFrame.LookVector * 1,
+                                           targetCharacter.HumanoidRootPart.Position)
+                        end
+                    end
+                end
+            end)
+            task.wait(0)
+        end
+    end)
+end)
+
+
+
+
+
+
+
+local aimBotEnabled = false
+local characterAimLockEnabled = false
+
+-- Kamera AimLock Fonksiyonu
+local function aimAtSelectedPlayer()
+    if not _G.SelectedPlayer or _G.SelectedPlayer == "" then
+        CoreGui:SetCore("SendNotification", {
+            Title = "VexonHub",
+            Text = "No One Selected",
+            Icon = "http://www.roblox.com/asset/?id=84519376661277",
+            Duration = 5
+        })
+        return
+    end
+
+    for _, player in ipairs(players:GetPlayers()) do
+        if string.find(string.lower(player.Name), string.lower(_G.SelectedPlayer), 1, true) or 
+           string.find(string.lower(player.DisplayName), string.lower(_G.SelectedPlayer), 1, true) then
+            
+            local character = player.Character
+            if character and character:FindFirstChild("HumanoidRootPart") then
+                camera.CFrame = CFrame.new(camera.CFrame.Position, character.HumanoidRootPart.Position)
+                return
+            end
+        end
+    end
+end
+
+-- Karakter AimLock Fonksiyonu
+local function lockCharacterToSelectedPlayer()
+    local character = localPlayer.Character
+    if not _G.SelectedPlayer or _G.SelectedPlayer == "" then
+        CoreGui:SetCore("SendNotification", {
+            Title = "VexonHub",
+            Text = "No One Selected",
+            Icon = "http://www.roblox.com/asset/?id=84519376661277",
+            Duration = 5
+        })
+        return
+    end
+    if not character or not character:FindFirstChild("HumanoidRootPart") then return end
+
+    for _, player in ipairs(players:GetPlayers()) do
+        if string.find(string.lower(player.Name), string.lower(_G.SelectedPlayer), 1, true) or 
+           string.find(string.lower(player.DisplayName), string.lower(_G.SelectedPlayer), 1, true) then
+            
+            local targetCharacter = player.Character
+            if targetCharacter and targetCharacter:FindFirstChild("HumanoidRootPart") then
+                character.HumanoidRootPart.CFrame = CFrame.new(character.HumanoidRootPart.Position, targetCharacter.HumanoidRootPart.Position)
+                return
+            end
+        end
+    end
+end
+
+-- Kamera AimLock Toggle
+tabFling.newToggle("AimLock Cam Player", "Lock Camera to Selected Player", false, function(toggleState)
+    aimBotEnabled = toggleState
+    if aimBotEnabled then
+        task.spawn(function()
+            while aimBotEnabled do
+                aimAtSelectedPlayer()
+                task.wait(0.1)
+            end
+        end)
+    end
+end)
+
+-- Karakter AimLock Toggle
+tabFling.newToggle("AimLock Character Player", "Lock Character to Selected Player", false, function(toggleState)
+    characterAimLockEnabled = toggleState
+    if characterAimLockEnabled then
+        task.spawn(function()
+            while characterAimLockEnabled do
+                lockCharacterToSelectedPlayer()
+                task.wait(0.1)
+            end
+        end)
+    end
+end)
+
+
+
+local RunService = game:GetService("RunService")
+
+local orbitEnabled = false
+local orbitConnection1, orbitConnection2
+
+tabFling.newToggle("Orbit Player", "Orbit Around Selected Player", false, function(toggleState)
+    orbitEnabled = toggleState
+
+    if orbitEnabled then
+        task.spawn(function()
+            local character = localPlayer.Character
+            local root = character and character:FindFirstChild("HumanoidRootPart")
+
+            if not root then return end
+
+            local targetPlayer
+            for _, player in ipairs(players:GetPlayers()) do
+                if string.find(string.lower(player.Name), string.lower(_G.SelectedPlayer or ""), 1, true) or
+                   string.find(string.lower(player.DisplayName), string.lower(_G.SelectedPlayer or ""), 1, true) then
+                    targetPlayer = player
+                    break
+                end
+            end
+
+            if not targetPlayer or not targetPlayer.Character or not targetPlayer.Character:FindFirstChild("HumanoidRootPart") then return end
+
+            local targetRoot = targetPlayer.Character:FindFirstChild("HumanoidRootPart")
+            local rotation = 0
+            local speed = 8
+            local distance = 5
+
+            orbitConnection1 = RunService.Heartbeat:Connect(function()
+                if not orbitEnabled or not root or not targetRoot then
+                    orbitConnection1:Disconnect()
+                    orbitConnection2:Disconnect()
+                    return
+                end
+
+                rotation = rotation + speed
+                root.CFrame = CFrame.new(targetRoot.Position) * CFrame.Angles(0, math.rad(rotation), 0) * CFrame.new(distance, 0, 0)
+            end)
+
+            orbitConnection2 = RunService.RenderStepped:Connect(function()
+                if not orbitEnabled or not root or not targetRoot then
+                    orbitConnection1:Disconnect()
+                    orbitConnection2:Disconnect()
+                    return
+                end
+
+                root.CFrame = CFrame.new(root.Position, targetRoot.Position)
+            end)
+        end)
+    else
+        if orbitConnection1 then orbitConnection1:Disconnect() end
+        if orbitConnection2 then orbitConnection2:Disconnect() end
+    end
+end)
+
+
+
+tabFling.newLabel("Fling")
+
+
+
+
+
+
+local lp = game:GetService("Players").LocalPlayer
+
+local function checkAndFling()
+    local liveFolder = game.Workspace:FindFirstChild("Live")
+    if not liveFolder then return end
+    
+    for _, playerModel in pairs(liveFolder:GetChildren()) do
+        local streak = playerModel:GetAttribute("CurrentStreak") or 0
+        local player = game:GetService("Players"):FindFirstChild(playerModel.Name)
+
+        if player and streak >= 10 then
+            miniFling(player) -- Fling fonksiyonunu çağır
+        end
+    end
+end
+
+tabFling.newButton("Fling Streak Players", "Flings People Has Streaks", function()
+    checkAndFling()
+end)
+
+
+
+
+
+
+local toggleEnabled = false
+local player = game.Players.LocalPlayer
+local runService = game:GetService("RunService")
+
+tabFling.newToggle("Fling Aura", "Flings Person Within 10 Stud", false, function(toggleState)
+    toggleEnabled = toggleState
+    if toggleState then
+        task.spawn(function()
+            while toggleEnabled do
+                if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    for _, target in pairs(game.Players:GetPlayers()) do
+                        if target ~= player and target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
+                            local targetHRP = target.Character.HumanoidRootPart
+                            local myHRP = player.Character.HumanoidRootPart
+                            
+                            if (myHRP.Position - targetHRP.Position).Magnitude <= 10 then
+                                miniFling(target) -- Fling fonksiyonunu çağır
+                            end
+                        end
+                    end
+                end
+                task.wait(0.5) -- Yükü azaltmak için bekleme süresi
+            end
+        end)
+    end
+end)
+
+-- Karakter öldüğünde toggle'ı kapat
+player.CharacterAdded:Connect(function()
+    toggleEnabled = false -- Toggle'ı kapat
+end)
+
+
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local Camera = workspace.CurrentCamera
+
+local toggleEnabled = false
+
+tabFling.newToggle("Click Fling", "Flings the Person You Clicked", false, function(toggleState)
+    toggleEnabled = toggleState
+    if toggleState then
+    else
+    end
+end)
+
+local function getPlayerFromTarget(target)
+    if target and target.Parent and target.Parent:IsA("Model") then
+        return Players:GetPlayerFromCharacter(target.Parent)
+    end
+end
+
+
+Mouse.Button1Down:Connect(function()
+    if not toggleEnabled then return end
+
+    local targetPlayer = getPlayerFromTarget(Mouse.Target)
+    if targetPlayer and targetPlayer ~= LocalPlayer then
+        miniFling(targetPlayer)
+    end
+end)
+
+UserInputService.TouchTap:Connect(function(touchPositions, gameProcessed)
+    if not toggleEnabled or gameProcessed then return end
+
+    local touchPosition = touchPositions[1]
+    local rayOrigin = Camera.CFrame.Position
+    local rayDirection = (Camera:ViewportPointToRay(touchPosition.X, touchPosition.Y)).Direction * 500
+
+    local raycastParams = RaycastParams.new()
+    raycastParams.FilterDescendantsInstances = {LocalPlayer.Character}
+    raycastParams.FilterType = Enum.RaycastFilterType.Blacklist
+
+    local result = workspace:Raycast(rayOrigin, rayDirection, raycastParams)
+    local targetPlayer = getPlayerFromTarget(result and result.Instance)
+
+    if targetPlayer and targetPlayer ~= LocalPlayer then
+        miniFling(targetPlayer)
+    end
+end)
+
+
+
+
+local toggleEnabled = false
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+
+local startPosition = humanoidRootPart and humanoidRootPart.CFrame
+
+tabFling.newToggle("Fling All", "Flings Everyone Loop", false, function(toggleState)
+    toggleEnabled = toggleState
+    if toggleState then
+        task.spawn(function()
+            while toggleEnabled do
+                for _, player in pairs(Players:GetPlayers()) do
+                    if player ~= LocalPlayer then
+                        miniFling(player)
+                    end
+                end
+                task.wait(0.5)
+            end
+        end)
+    else
+        if startPosition and humanoidRootPart then
+            humanoidRootPart.CFrame = startPosition
+        end
+    end
+end)
+
+local player = game.Players.LocalPlayer
+local userInputService = game:GetService("UserInputService")
+local toggleEnabled = false
+
+
+ 
+local hiddenfling = false
+local detection
+if game:GetService("ReplicatedStorage"):FindFirstChild("juisdfj0i32i0eidsuf0iok") then
+	hiddenfling = false
+else
+	hiddenfling = false
+	detection = Instance.new("Decal")
+	detection.Name = "juisdfj0i32i0eidsuf0iok"
+	detection.Parent = game:GetService("ReplicatedStorage")
+end
+local function fling()
+	local hrp, c, vel, movel = nil, nil, nil, 0.1
+	while hiddenfling do
+		game:GetService("RunService").Heartbeat:Wait()
+		local lp = game.Players.LocalPlayer
+		while hiddenfling and not (c and c.Parent and hrp and hrp.Parent) do
+			game:GetService("RunService").Heartbeat:Wait()
+			c = lp.Character
+			hrp = c:FindFirstChild("HumanoidRootPart") or c:FindFirstChild("Torso") or c:FindFirstChild("UpperTorso")
+		end
+		if hiddenfling then
+			vel = hrp.Velocity
+			hrp.Velocity = vel * 10000 + Vector3.new(0, 10000, 0)
+			game:GetService("RunService").RenderStepped:Wait()
+			if c and c.Parent and hrp and hrp.Parent then
+				hrp.Velocity = vel
+			end
+			game:GetService("RunService").Stepped:Wait()
+			if c and c.Parent and hrp and hrp.Parent then
+				hrp.Velocity = vel + Vector3.new(0, movel, 0)
+				movel = movel * -1
+			end
+		end
+	end
+end
+tabFling.newToggle("Touch Fling", "Fling The Person You Touch", false, function(toggleState)
+	if toggleState then
+		hiddenfling = true
+		coroutine.wrap(fling)()
+	else
+		hiddenfling = false
+	end
+end)
+
+
+
+local hiddenfling = false
+local detection
+local flingPower = 1000 -- Varsayılan fling gücü
+
+if game:GetService("ReplicatedStorage"):FindFirstChild("juisdfj0i32i0eidsuf0iok") then
+	hiddenfling = false
+else
+	hiddenfling = false
+	detection = Instance.new("Decal")
+	detection.Name = "juisdfj0i32i0eidsuf0iok"
+	detection.Parent = game:GetService("ReplicatedStorage")
+end
+
+local function fling()
+	local hrp, c, vel, movel = nil, nil, nil, 0.1
+	while hiddenfling do
+		game:GetService("RunService").Heartbeat:Wait()
+		local lp = game.Players.LocalPlayer
+		while hiddenfling and not (c and c.Parent and hrp and hrp.Parent) do
+			game:GetService("RunService").Heartbeat:Wait()
+			c = lp.Character
+			hrp = c:FindFirstChild("HumanoidRootPart") or c:FindFirstChild("Torso") or c:FindFirstChild("UpperTorso")
+		end
+		if hiddenfling then
+			vel = hrp.Velocity
+			hrp.Velocity = vel * flingPower + Vector3.new(0, 100, 0) -- Fling gücü slider'dan alınan değere göre ayarlanacak
+			game:GetService("RunService").RenderStepped:Wait()
+			if c and c.Parent and hrp and hrp.Parent then
+				hrp.Velocity = vel
+			end
+			game:GetService("RunService").Stepped:Wait()
+			if c and c.Parent and hrp and hrp.Parent then
+				hrp.Velocity = vel + Vector3.new(0, movel, 0)
+				movel = movel * -1
+			end
+		end
+	end
+end
+
+tabFling.newToggle("Costum Touch Fling Power", "Fling The Person You Touch", false, function(toggleState)
+	if toggleState then
+		hiddenfling = true
+		coroutine.wrap(fling)()
+	else
+		hiddenfling = false
+	end
+end)
+
+-- Fling gücünü ayarlamak için slider
+tabFling.newSlider("Fling Power Value", "Adjust the fling power", 1000, true, function(num)
+    flingPower = num -- Slider'dan alınan değeri fling gücü olarak ayarla
+end)
+
+
+
+local AntiFling = false
+local antiflingConnections = {}
+local function NoCollision(PLR)
+    if AntiFling and PLR.Character then
+        for _, x in pairs(PLR.Character:GetDescendants()) do
+            if x:IsA("BasePart") and x.CanCollide then
+                x.CanCollide = false
+            end
+        end
+    end
+end
+local function RestoreCollision()
+    for _, v in pairs(game.Players:GetPlayers()) do
+        if v ~= game.Players.LocalPlayer and v.Character then
+            for _, x in pairs(v.Character:GetDescendants()) do
+                if x:IsA("BasePart") then
+                    x.CanCollide = true
+                end
+            end
+        end
+    end
+end
+local function EnableAntiFling()
+    for _, v in pairs(game.Players:GetPlayers()) do
+        if v ~= game.Players.LocalPlayer then
+            local connection = game:GetService("RunService").Stepped:Connect(function()
+                NoCollision(v)
+            end)
+            table.insert(antiflingConnections, connection)
+        end
+    end
+    game.Players.PlayerAdded:Connect(function(player)
+        if player ~= game.Players.LocalPlayer then
+            local connection = game:GetService("RunService").Stepped:Connect(function()
+                NoCollision(player)
+            end)
+            table.insert(antiflingConnections, connection)
+        end
+    end)
+end
+local function DisableAntiFling()
+    for _, connection in pairs(antiflingConnections) do
+        connection:Disconnect()
+    end
+    table.clear(antiflingConnections)
+    RestoreCollision()
+end
+tabFling.newToggle("Anti Fling", "Other Exploiters Cant Fling You", false, function(toggleState)
+    AntiFling = toggleState
+    if toggleState then
+        EnableAntiFling()
+    else
+        DisableAntiFling()
+    end
+end)
