@@ -2,7 +2,7 @@ local gameId = game.PlaceId
 
 if gameId == 130818724007978 or gameId == 12360882630 or gameId == 10449761463 or gameId == 131048399685555 then
 -- The Strongest Battle Grounds
-loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/29d25cd820d728b6baf41c56fe77a20bdaa8e8149ce6aad2d4e60dae2cfb54b5/download"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/d7729df2fdc1ffd8e68f3a9d81c20600.lua"))()
 
 elseif gameId == 142823291 or gameId == 71915429981056 or gameId == 88471917710381 then
 -- Murder Mystery 2
