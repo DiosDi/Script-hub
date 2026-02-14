@@ -30,15 +30,7 @@ loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/f7d076b0f9452
 
 elseif gameId == 18687417158 then
 -- Forsaken
-local CoreGui = game:GetService("StarterGui")
-    CoreGui:SetCore("SendNotification", {
-        Title = "VexonHub",
-        Text = "Down for now sry use universal",
-        Icon = "http://www.roblox.com/asset/?id=84519376661277",
-        Duration = 10,
-        Callback = AllowRunServiceBind,
-    })
-loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/df4d50aa689f0fc8"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/UFviddJv"))()
 
 elseif gameId == 9391468976 then
 -- Jujutsu Shenanigans 
