@@ -1,87 +1,61 @@
 local gameId = game.PlaceId
-local scriptLoaded = false
+local StarterGui = game:GetService("StarterGui")
 
+local GameScripts = {
+    -- [The Strongest Battle Grounds]
+    [{130818724007978, 12360882630, 10449761463, 131048399685555}] = "https://api.luarmor.net/files/v4/loaders/d7729df2fdc1ffd8e68f3a9d81c20600.lua",
 
-if gameId == 130818724007978 or gameId == 12360882630 or gameId == 10449761463 or gameId == 131048399685555 then
-    -- The Strongest Battle Grounds
-    loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/d7729df2fdc1ffd8e68f3a9d81c20600.lua"))()
-    scriptLoaded = true
+    -- [Murder Mystery 2]
+    [{142823291, 71915429981056}] = "https://api.junkie-development.de/api/v1/luascripts/public/4e35c43acd744802047a041c304bd57275548c0b5b913d206032590337e2d4ed/download",
+    
+    -- [Slap Battles]
+    [{9015014224, 6403373529}] = "https://api.jnkie.com/api/v1/luascripts/public/67b9c7fbf328b7b1ea31f63a22f2f40465a757f29cf0aefdb891083a4a8c3778/download",
 
-elseif gameId == 142823291 or gameId == 71915429981056 or gameId == 88471917710381 then
-    -- Murder Mystery 2
-    loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/4e35c43acd744802047a041c304bd57275548c0b5b913d206032590337e2d4ed/download"))()
-    scriptLoaded = true
+    -- [Build a Boat For Treasure]
+    [{537413528}] = "https://pandadevelopment.net/virtual/file/d9b061887be17192",
 
-elseif gameId == 9015014224 or gameId == 11520107397 or gameId == 6403373529 or gameId == 124596094333302 then
-    -- Slap Battles
-    loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/67b9c7fbf328b7b1ea31f63a22f2f40465a757f29cf0aefdb891083a4a8c3778/download"))()
-    scriptLoaded = true
+    -- [Natural Disaster Survival]
+    [{189707}] = "https://pandadevelopment.net/virtual/file/af8f56f8c5f85179",
 
-elseif gameId == 537413528 then
-    -- Build a Boat For Treasure
-    loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/d9b061887be17192"))()
-    scriptLoaded = true
+    -- [Ninja Legends]
+    [{3956818381}] = "https://pandadevelopment.net/virtual/file/f7d076b0f9452913",
 
-elseif gameId == 189707 then
-    -- Natural Disaster Survival
-    loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/af8f56f8c5f85179"))()
-    scriptLoaded = true
+    -- [Forsaken]
+    [{18687417158}] = "https://pastebin.com/raw/UFviddJv",
 
-elseif gameId == 76558904092080 or gameId == 129009554587176 then
-    -- Forge
-    loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/834553be00018741e606bcde0d7f9b13b5b9c0f9854f7e7db1d6a121cd995734/download"))()
-    scriptLoaded = true
+    -- [Jujutsu Shenanigans]
+    [{9391468976}] = "https://api.junkie-development.de/api/v1/luascripts/public/69de86eca233ff49a2340f4d6d51a2fee991dc86f6af8d979a01a1a3b7bce183/download",
 
-elseif gameId == 3956818381 then
-    -- Ninja Legends
-    loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/f7d076b0f9452913"))()
-    scriptLoaded = true
+    -- [Bee Swarm Simulator]
+    [{1537690962}] = "https://pandadevelopment.net/virtual/file/df4d50aa689f0fc8",
 
-elseif gameId == 18687417158 then
-    -- Forsaken  
-    loadstring(game:HttpGet("https://pastebin.com/raw/UFviddJv"))()
-    scriptLoaded = true
+    -- [Brookhaven RP]
+    [{4924922222}] = "https://api.junkie-development.de/api/v1/luascripts/public/7c9b01fe4315a4eafc27006e7872d91a01b93bfac771fb27039c3e3fda77c797/download",
+}
 
-elseif gameId == 9391468976 then
-    -- Jujutsu Shenanigans 
-    loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/69de86eca233ff49a2340f4d6d51a2fee991dc86f6af8d979a01a1a3b7bce183/download"))()
-    scriptLoaded = true
+local UniversalScript = "https://pandadevelopment.net/virtual/file/df0160eb863d26d0"
 
-elseif gameId == 1537690962 then
-    -- Bee Swarm Simulator
-    loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/df4d50aa689f0fc8"))()
-    scriptLoaded = true
-
-elseif gameId == 126509999114328 or gameId == 79546208627805 then
-    -- 99 Nights In The Forest
-    loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/b8ea668b03728d87291e54463425fe5727979e498ea1bee2edaa30fea7fdbc6d/download"))()
-    scriptLoaded = true
-
-elseif gameId == 4924922222 then
-    -- Brook Haven
-    loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/7c9b01fe4315a4eafc27006e7872d91a01b93bfac771fb27039c3e3fda77c797/download"))()
-    scriptLoaded = true
-
-elseif gameId == 109983668079237 or gameId == 96342491571673 then
-    -- Steal a Brainrot
-    loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/1a676f54b72bb3f0"))()
-    scriptLoaded = true
-
-elseif gameId == 70876832253163 or gameId == 116495829188952 then
-    -- Dead Rails
-    loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/de973c845922198d"))()
-    scriptLoaded = true
-
-else
-
-    local CoreGui = game:GetService("StarterGui")
-    CoreGui:SetCore("SendNotification", {
-        Title = "VexonHub",
-        Text = "Game not specifically supported - Loading Universal",
+local function notify(title, text)
+    StarterGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
         Icon = "http://www.roblox.com/asset/?id=84519376661277",
-        Duration = 5,
+        Duration = 3,
     })
-    loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/df0160eb863d26d0"))() 
-    scriptLoaded = true
 end
 
+local selectedScript = nil
+
+for ids, link in pairs(GameScripts) do
+    if table.find(ids, gameId) then
+        selectedScript = link
+        break
+    end
+end
+
+if selectedScript then
+    loadstring(game:HttpGet(selectedScript))()
+else
+    notify("VexonHub", "Game not supported - Loading Universal")
+    loadstring(game:HttpGet(UniversalScript))()
+end
