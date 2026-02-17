@@ -43,7 +43,7 @@ loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/df4d50aa689f0
 
 elseif gameId == 126509999114328 or gameId == 79546208627805 then
 -- 99 Nights In The Forest
-loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/042ea71b697fafe62230335e0caf2c91.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/2e19f05684e5a9946c8f3e94afc1a122.lua"))()
 
 elseif gameId == 4924922222 then
 -- Brook Haven
