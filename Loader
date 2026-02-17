@@ -1,5 +1,6 @@
+wait(1)
 local gameId = game.PlaceId
-
+wait(1)
 if gameId == 130818724007978 or gameId == 12360882630 or gameId == 10449761463 or gameId == 131048399685555 then
 -- The Strongest Battle Grounds
 loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/d7729df2fdc1ffd8e68f3a9d81c20600.lua"))()
@@ -30,7 +31,7 @@ loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/f7d076b0f9452
 
 elseif gameId == 18687417158 then
 -- Forsaken
-loadstring(game:HttpGet("https://pastebin.com/raw/UFviddJv"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/042ea71b697fafe62230335e0caf2c91.lua"))()
 
 elseif gameId == 9391468976 then
 -- Jujutsu Shenanigans 
