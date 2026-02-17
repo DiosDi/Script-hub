@@ -29,7 +29,7 @@ elseif gameId == 3956818381 then
 -- Ninja Lagends
 loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/f7d076b0f9452913"))()
 
-elseif gameId == 18687417158 then
+elseif gameId == 18687417158 or gameId == 83645629621104 then
 -- Forsaken
 loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/042ea71b697fafe62230335e0caf2c91.lua"))()
 
