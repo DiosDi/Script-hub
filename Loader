@@ -17,6 +17,10 @@ elseif gameId == 537413528 then
 -- Build a Boat For Treasure
 loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/d9b061887be17192"))()
 
+elseif gameId == 71008479572236 then
+-- bite by niges
+loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/ff8456b7f1d63fe042cb6597636e04c2.lua"))()
+
 elseif gameId == 189707 then
 -- Natural Disaster Survival
 loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/af8f56f8c5f85179"))()
