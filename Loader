@@ -68,7 +68,8 @@ else
         Duration = 10,
         Callback = AllowRunServiceBind,
     })
-loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/df4d50aa689f0fc8"))()
+
+loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/a2b5cac30a50c7d74af2238fe7dbb1c1.lua"))()
 end
 
 
